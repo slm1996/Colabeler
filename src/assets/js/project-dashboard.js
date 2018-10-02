@@ -136,7 +136,7 @@ if(shenjian.is("page-main-index")){
                                 nextCollection.append(`<li data-id="${fileList[nextIndex].path}" data-index="${nextIndex}"><img src="file:///${fileList[nextIndex].path.replace(/\\/g,"/")}" /></li>`)
                             }
                             prevList = prevCollection.children("li");
-                            if(prevList.length > collwidth/60){
+                            if(prevList.length > collwidth/60-1){
                                 prevList.first().remove();
                             }
                         }
@@ -151,7 +151,7 @@ if(shenjian.is("page-main-index")){
                                 prevCollection.prepend(`<li data-id="${fileList[prevIndex].path}" data-index="${prevIndex}"><img src="file:///${fileList[prevIndex].path.replace(/\\/g,"/")}" /></li>`)
                             }
                             nextList = nextCollection.children("li");
-                            if(nextList.length > collwidth/60){
+                            if(nextList.length > collwidth/60-1){
                                 nextList.last().remove();
                             }
                         }
@@ -173,7 +173,7 @@ if(shenjian.is("page-main-index")){
                                     nextCollection.append(`<li data-id="${fileList[nextIndex].path}" data-index="${nextIndex}"><img src="file:///${fileList[nextIndex].path.replace(/\\/g,"/")}" /></li>`)
                                 }
                                 prevList = prevCollection.children("li");
-                                if(prevList.length > collwidth/60){
+                                if(prevList.length > collwidth/60-1){
                                     prevList.first().remove();
                                 }
                             }
@@ -192,7 +192,7 @@ if(shenjian.is("page-main-index")){
                                     prevCollection.prepend(`<li data-id="${fileList[prevIndex].path}" data-index="${prevIndex}"><img src="file:///${fileList[prevIndex].path.replace(/\\/g,"/")}" /></li>`)
                                 }
                                 nextList = nextCollection.children("li");
-                                if(nextList.length > collwidth/60){
+                                if(nextList.length > collwidth/60-1){
                                     nextList.last().remove();
                                 }
                             }
