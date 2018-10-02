@@ -1,0 +1,18 @@
+{
+    "plugin_name":"Video Tracking",
+    "group_name":"Computer Vision",
+
+    "toolbar_move":"Move",
+    "toolbar_remove":"Delete",
+    "toolbar_rect":"New Object",
+
+    "inputs_source":"Video Folder（MP4 Supported）",
+    "inputs_classify_value":"Classification Values",
+    "inputs_classify_value_default":"cat,dog",
+
+    "page_select2_input":"Custom Input",
+    "page_select2_predefined":"Predefined",
+
+    "page_result_title":"Label Info",
+    "page_notEmpty":"Label value can not be empty!"
+}

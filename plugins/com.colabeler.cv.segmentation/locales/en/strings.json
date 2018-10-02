@@ -1,0 +1,21 @@
+{
+    "plugin_name":"Pixel-Wise",
+    "group_name":"Computer Vision",
+
+    "toolbar_move":"Move",
+    "toolbar_eraser":"Erase",
+    "toolbar_paint":"Brush",
+
+    "inputs_source":"Image Folder",
+    "inputs_classify_value":"Classification Values",
+    "inputs_classify_value_default":"cat,dog",
+
+    "page_select2_input":"Custom Input",
+    "page_select2_predefined":"Predefined",
+
+    "page_confirm_delete":"Sure to delete this label?",
+
+    "page_result_title":"Label List",
+    "page_result_add":"Add New",
+    "page_notEmpty":"Label value can not be empty!"
+}

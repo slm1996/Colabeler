@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="{{platform}}">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" type="text/css" href="../../../assets/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../assets/plugins/jquery-toast/jquery-toast.css">
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" type="text/css" href="../../../assets/js/components/stack/stack.css">
+    <link rel="stylesheet" type="text/css" href="../../../assets/js/components/icheck/icheck.css">
+
+    <!--plugins-->
+    <link rel="stylesheet" type="text/css" href="../../../assets/plugins/mCustomScrollbar/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" type="text/css" href="../../../assets/plugins/jquery-splitter/jquery.splitter.css">
+    <link rel="stylesheet" type="text/css" href="../../../assets/css/menu.css">
+    <link rel="stylesheet" type="text/css" href="../../../assets/css/main.css">
+
+    <link rel="stylesheet" type="text/css" href="../../../assets/css/project.css">
+</head>
+<body id="page-main-index">
+<header class="main-header">
+    <div class="title">
+        <i class="fs"></i>{{locales.app_name}}
+    </div>
+    <ul class="nav-menu" id="nav-menu">
+    </ul>
+    <ul class="nav-window" id="nav-window">
+        <li class="btn-transition btn-minimize"><i class="fs fs-min"></i></li>
+        <li class="btn-transition btn-resize"><i class="fs fs-max"></i></li>
+        <li class="btn-transition btn-resize-mac"><i class="fs fs-resize-mac"></i></li>
+        <li class="btn-transition btn-exit"><i class="fs fs-close"></i></li>
+    </ul>
+</header>
+
+<div class="content-wrapper">
+    <div class="sidebar">
+        <ul class="sidebar-login" id="sidebar-login">
+            <li class="user-information">
+                <div class="user-img">
+                    <img src="../../../assets/image/user_img.png" width="40px" height="40px">
+                    <div class="user-detail">
+                        <div class="detail-arrow"></div>
+                        <div class="detail-content">
+                            <div class="content-show-img">
+                                <img src="../../../assets/image/user_img.png" width="100px" height="100px">
+                            </div>
+                            <div class="content-show-username">
+                                <span class="username"></span>
+                            </div>
+                            <div class="user-loginout">
+                                <span class="loginout-text">{{locales.menu_index_signOut}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="login-title">
+
+            </li>
+            <!-- 转云端图标 -->
+            <!--<li class="cloud-project disabled">-->
+                <!--<i class="fs fs-sync"></i>-->
+                <!--{{locales.main_index_change_cloud}}-->
+            <!--</li>-->
+        </ul>
+        <ul class="toolbar" id="toolbar">
+            <li class="separator"></li>
+            <li class="disabled" data-role="prev" data-tip="←"><i class="fs fs-prev"></i>{{locales.main_index_prev}}</li>
+            <li class="disabled" data-role="next" data-tip="→"><i class="fs fs-next"></i>{{locales.main_index_next}}</li>
+            <li class="disabled" data-role="export" data-tip="output"><i class="fs fs-save"></i>{{locales.main_index_export}}</li>
+        </ul>
+        <!-- 石勇 新增-->
+        <div class="keyTips">
+            <div class="keyTipsArrow"></div>
+            <div class="keyTipsText">
+                <span>{{locales.toolbar_accelerator}}</span>
+                <br />
+                <span class="keyValue"></span>
+            </div>
+        </div>
+    </div>
+    <div class="content" data-toggle="stack" id="app-stack">
+        <ul id="tab-list">
+        </ul>
+        <div class="content-layers" id="layer-list">
+        </div>
+    </div>
+</div>
+<script>window.$ = window.jQuery = require('../../../assets/plugins/jquery/jquery-3.2.1.min.js');</script>
+<script>window.i18n = new(require('../../../../locales/i18n.js'));</script>
+<script src='../../../assets/plugins/mCustomScrollbar/jquery.mCustomScrollbar.js'></script>
+<script src='../../../assets/plugins/jquery/jquery.ease.js'></script>
+
+<!--bootstrap js-->
+<script src="../../../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="../../../assets/plugins/lodash/lodash.min.js"></script>
+<script src="../../../assets/plugins/jquery-toast/jquery-toast.js"></script>
+<script src="../../../assets/plugins/pouch/pouchdb.js"></script>
+<script src="../../../assets/plugins/pouch/pouchdb.find.js"></script>
+<script src="../../../assets/plugins/tiff/tiff.js"></script>
+
+<script src='../../../assets/js/components/core.js'></script>
+
+<script src='../../../assets/js/components/dialog/dialog.js'></script>
+<script src='../../../assets/js/components/lodash-ext/lodash-ext.js'></script>
+<script src='../../../assets/js/components/icheck/icheck.js'></script>
+<script src='../../../assets/js/components/stack/stack.js'></script>
+<script src='../../../assets/js/components/plugin/preload-plugin.js'></script>
+
+<script src="../../../assets/js/menu.js"></script>
+<script src="../../../assets/js/main.js"></script>
+<script src="../../../assets/js/main-tab.js"></script>
+
+<script src="../../../assets/js/project.js"></script>
+<script src="../../../assets/js/project-dashboard.js"></script>
+</body>
+</html>

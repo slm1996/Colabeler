@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="{{platform}}">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" type="text/css" href="../../../assets/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href='../../../assets/plugins/jquery-toast/jquery-toast.css'>
+    <link rel="stylesheet" type="text/css" href='../../../assets/js/components/icheck/icheck.css'>
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" type="text/css" href="../../../assets/js/components/inputs/input-folder.css">
+    <link rel="stylesheet" type="text/css" href="../../../assets/css/dialog.css">
+</head>
+<body id="dialog-project-import" class="dialog"  data-project-id="{{project_id}}">
+<header class="dialog-header">
+    <div class="title">{{locales.project_import_title}}</div>
+    <ul class="nav-window" id="nav-window">
+        <li class="btn-transition btn-exit"><i class="fs fs-close"></i></li>
+    </ul>
+</header>
+<div class="content-wrapper">
+    <div class="form-group">
+        <label>{{locales.project_import_tips}}</label>
+        <input type="hidden" data-toggle="input.folder.text" name="source" class="input plugin" value="" id="importFolderPath">
+    </div>
+</div>
+<footer class="dialog-footer">
+    <a class="btn btn-primary btn-import">{{locales.project_import_ok}}</a>
+</footer>
+<div class="import-progress">
+</div>
+<script>window.$ = window.jQuery = require('../../../assets/plugins/jquery/jquery-3.2.1.min.js');</script>
+<script>window.i18n = new(require('../../../../locales/i18n.js'));</script>
+<!--bootstrap js-->
+<script src="../../../assets/plugins/pouch/pouchdb.js"></script>
+<script src="../../../assets/js/components/x2js/xml2json.min.js"></script>
+<script src='../../../assets/js/components/core.js'></script>
+<script src='../../../assets/js/components/icheck/icheck.js'></script>
+<script src='../../../assets/js/components/stack/stack.js'></script>
+
+<script src='../../../assets/js/project.js'></script>
+<script src='../../../assets/js/project-dashboard.js'></script>
+<script src='../../../assets/js/components/inputs/input-folder.js'></script>
+</body>
+</html>

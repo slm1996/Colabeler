@@ -1,0 +1,21 @@
+{
+    "plugin_name":"Localization",
+    "group_name":"Computer Vision",
+
+    "toolbar_move":"Move",
+    "toolbar_remove":"Delete",
+    "toolbar_curve":"Curve",
+    "toolbar_polygon":"Polygon",
+    "toolbar_rect":"Rectangle",
+
+    "inputs_source":"Image Folder",
+    "inputs_classify_value":"Classification Values",
+    "inputs_classify_value_default":"cat,dog",
+
+
+    "page_select2_input":"Custom Input",
+    "page_select2_predefined":"Predefined",
+
+    "page_result_title":"Label List",
+    "page_notEmpty":"Label value can not be empty!"
+}

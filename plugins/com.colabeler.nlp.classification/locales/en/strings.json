@@ -1,0 +1,12 @@
+{
+  "plugin_name":"Classification",
+  "group_name":"NLP",
+
+  "inputs_source":"Text Folder",
+  "inputs_classify":"Classes Name(Separated by comma)",
+  "inputs_classify_default":"Positive,Negative",
+  "inputs_count":"Number of classes",
+
+  "page_notEmpty":"Class can not be empty",
+  "page_invalid":" is not a valid class name"
+}

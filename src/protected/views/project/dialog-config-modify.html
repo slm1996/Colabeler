@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html class="{{platform}}">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" type="text/css" href="../../../assets/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../assets/plugins/jquery-toast/jquery-toast.css">
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" type="text/css" href="../../../assets/js/components/stack/stack.css">
+    <link rel="stylesheet" type="text/css" href="../../../assets/js/components/icheck/icheck.css">
+    <link rel="stylesheet" type="text/css" href="../../../assets/js/components/inputs/input-folder.css">
+    <link rel="stylesheet" type="text/css" href="../../../assets/css/dialog.css">
+</head>
+<body class="dialog" id="dialog-modify-config">
+<header class="dialog-header">
+    <div class="title">{{locales.project_settings}}</div>
+    <ul class="nav-window" id="nav-window">
+        <li class="btn-transition btn-exit"><i class="fs fs-close"></i></li>
+    </ul>
+</header>
+<div class="content-wrapper" data-toggle="stack">
+    <div class="project-setting">
+        <div class="stack-layer" project-id="{{project_id}}">
+            <div class="form-group">
+                <label>{{locales.project_new_projectName}}:</label>
+                <input type="text" name="__name"  value="{{name}}">
+            </div>
+            {{#inputs}}
+            <div class="form-group">
+                <label>{{label}}:</label>
+                {{#textarea}}
+                    {{#source}}
+                    <textarea type="text" name="{{name}}" class="input plugin" disabled>{{val}}</textarea>
+                    {{/source}}
+                    {{^source}}
+                    <textarea type="text" name="{{name}}" class="input plugin" >{{val}}</textarea>
+                    {{/source}}
+                {{/textarea}}
+                {{^textarea}}
+                    {{#source}}
+                     <input type="text" data-toggle="input.string" name="{{name}}" class="input plugin" disabled  value="{{val}}">
+                    {{/source}}
+                    {{^source}}
+                    <input type="text" data-toggle="input.{{type}}" name="{{name}}" class="input plugin"  value="{{val}}">
+                    {{/source}}
+                {{/textarea}}
+
+            </div>
+            {{/inputs}}
+        </div>
+    </div>
+</div>
+<footer class="dialog-footer">
+<a class="btn btn-primary" id="btn-confirm">{{locales.main_confirm_ok}}</a>
+</footer>
+<script>window.$ = window.jQuery = require('../../../assets/plugins/jquery/jquery-3.2.1.min.js');</script>
+<script>window.i18n = new(require('../../../../locales/i18n.js'));</script>
+<script src='../../../assets/plugins/mCustomScrollbar/jquery.mCustomScrollbar.js'></script>
+<script src='../../../assets/plugins/jquery/jquery.ease.js'></script>
+
+<!--bootstrap js-->
+<script src="../../../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="../../../assets/plugins/lodash/lodash.min.js"></script>
+<script src="../../../assets/plugins/jquery-toast/jquery-toast.js"></script>
+<script src="../../../assets/plugins/pouch/pouchdb.js"></script>
+<script src="../../../assets/plugins/pouch/pouchdb.find.js"></script>
+
+<script src='../../../assets/js/components/core.js'></script>
+<script src='../../../assets/js/components/dialog/dialog.js'></script>
+<script src='../../../assets/js/components/lodash-ext/lodash-ext.js'></script>
+<script src='../../../assets/js/components/icheck/icheck.js'></script>
+<script src='../../../assets/js/components/stack/stack.js'></script>
+<script src='../../../assets/js/components/inputs/input-folder.js'></script>
+<script src="../../../assets/js/project.js"></script>
+</body>
+</html>

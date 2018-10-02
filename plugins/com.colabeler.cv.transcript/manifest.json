@@ -1,0 +1,26 @@
+{
+  "name": "{{locales.plugin_name}}",
+  "description": "Object Recognition",
+  "author": "Colabeler",
+  "version": "0.0.1",
+  "identifier": "com.colabeler.cv.transcript",
+  "homepage_url": "http://www.colabeler.com",
+  "manifest_version": 1,
+  "icon":"src/assets/image/icon.svg",
+  "group":"{{locales.group_name}}",
+  "inputs":[
+    {
+      "name":"source",
+      "label":"{{locales.inputs_source}}",
+      "type":"folder.image"
+    }
+  ],
+  "outputs":[
+    {
+      "name":"transcript",
+      "type":"string"
+    }
+  ],
+  "main":"src/index.html",
+  "default_locale":"en"
+}

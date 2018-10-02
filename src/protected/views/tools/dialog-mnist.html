@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="{{platform}}">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" type="text/css" href="../../../assets/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href='../../../assets/plugins/jquery-toast/jquery-toast.css'>
+    <link rel="stylesheet" type="text/css" href='../../../assets/js/components/icheck/icheck.css'>
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" type="text/css" href="../../../assets/js/components/inputs/input-folder.css">
+    <link rel="stylesheet" type="text/css" href="../../../assets/css/dialog.css">
+</head>
+<body id="dialog-tools-mnist" class="dialog">
+<input type="hidden" class="icon-path" value="file:///{{plugin.root}}/{{plugin.icon}}">
+<input type="hidden" class="plugin-name" value="{{plugin.name}}">
+<header class="dialog-header">
+    <div class="title">{{locales.project_load_mnist_title}}</div>
+    <ul class="nav-window" id="nav-window">
+        <li class="btn-transition btn-exit"><i class="fs fs-close"></i></li>
+    </ul>
+</header>
+<div class="content-wrapper">
+    <div class="form-group">
+        <label>{{locales.project_load_mnist_img}}:</label>
+        <input type="text" data-toggle="input.file" id="images-path" name="images" class="input plugin" value=""/>
+    </div>
+    <div class="form-group">
+        <label>{{locales.project_load_mnist_label}}:</label>
+        <input type="text" data-toggle="input.file" id="labels-path" name="labels" class="input plugin" value=""/>
+    </div>
+</div>
+<footer class="dialog-footer">
+    <a class="btn btn-primary btn-import" id="btn-load">{{locales.project_import_ok}}</a>
+</footer>
+<div class="import-progress">
+</div>
+<script>window.$ = window.jQuery = require('../../../assets/plugins/jquery/jquery-3.2.1.min.js');</script>
+<script>window.i18n = new(require('../../../../locales/i18n.js'));</script>
+<script src='../../../assets/plugins/jquery-toast/jquery-toast.js'></script>
+<!--bootstrap js-->
+<script src="../../../assets/plugins/pouch/pouchdb.js"></script>
+<script src="../../../assets/plugins/pouch/pouchdb.find.js"></script>
+<script src="../../../assets/plugins/lodash/lodash.min.js"></script>
+<script src="../../../assets/js/components/x2js/xml2json.min.js"></script>
+
+<script src='../../../assets/js/components/core.js'></script>
+<script src='../../../assets/js/components/lodash-ext/lodash-ext.js'></script>
+<script src='../../../assets/js/components/icheck/icheck.js'></script>
+<script src='../../../assets/js/components/stack/stack.js'></script>
+<script src='../../../assets/js/components/inputs/input-folder.js'></script>
+<script src="../../../assets/js/tools.js"></script>
+</body>
+</html>

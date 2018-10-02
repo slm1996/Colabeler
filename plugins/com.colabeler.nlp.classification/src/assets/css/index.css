@@ -1,0 +1,152 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+.preview{
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    flex: 1;
+    overflow: hidden;
+    background-color: #dedede;
+    width: 100%;
+    overflow-y: scroll;
+}
+.preview > pre {
+    color: #2d2d2d;
+    text-align: left;
+    padding: 20px;
+    font-size: 15px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+
+.result{
+    width: 100%;
+    margin-top: 10px;
+    position: relative;
+    text-align: center;
+    height: 60px;
+    flex: none;
+}
+
+.result input{
+    border: 0;
+    display: inline-block;
+    height: 30px;
+    padding: 0;
+    background: #eee;
+    font-weight: bold;
+    text-align: center;
+    width: 50px;
+    margin-left: 10px;
+}
+
+.result .datalist{
+    background-color: #efefef;
+    min-width: 50px;
+    max-width: 120px;
+    position: absolute;
+    opacity: 0;
+    height: 120px;
+    bottom: 100%;
+    overflow-y: scroll
+}
+.result .datalist::-webkit-scrollbar
+{
+    width: 4px;
+    background-color: #F5F5F5;
+}
+.result .datalist::-webkit-scrollbar-track
+{
+    background-color: #F5F5F5;
+}
+.result .datalist::-webkit-scrollbar-thumb {
+    background-color: #a5a5a5;
+}
+
+.result .datalist li{
+    height: 30px;
+    line-height: 30px;
+    cursor: pointer;
+    padding: 0px 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.result .datalist li:hover{
+    background-color: #00b3ee;
+    color: white;
+}
+.result .datalist li.hidden{
+    display: none;
+}
+.result .mCSB_inside > .mCSB_container
+{
+    margin-right: 0;
+}
+.result .mCSB_scrollTools{
+    width: 4px;
+}
+/*************************
+
+石勇 快捷键提示
+
+****************************/
+.contentTips{
+    width: 260px;
+    display: none;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+    z-index: 666;
+}
+
+.contentTips .contentTipsArrow{
+    width: 28px;
+    height: 28px;
+    border-width: 14px;
+    border-color: transparent #727071 transparent transparent;
+    border-style: solid;
+    box-sizing: border-box;
+    transition: 1s;
+    opacity: 0.9;
+    position: relative;
+    top: 8px;
+    left: -8px;
+}
+
+.contentTips .contentTipsText{
+    width: fit-content;
+    height: 28px;
+    border: none;
+    background-color: #727071;
+    opacity: 0.9;
+    border-radius: 0px 3px 3px 0px;
+    text-align: center;
+    padding: 0px 10px;
+    position: relative;
+    top: -20px;
+    left: 20px;
+}
+
+.contentTips .contentTipsText span{
+    max-width: 180px;
+    height: 28px;
+    line-height: 28px;
+    color: #F7F7F7;
+    font-size: 14px;
+    font-family: "youyuan";
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: bold;
+}

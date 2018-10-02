@@ -1,0 +1,42 @@
+{
+  "name": "Colabeler",
+  "version": "1.1.14",
+  "buildVersion": "65",
+  "productName": "Colabeler",
+  "homepage": "http://www.colabeler.com",
+  "author": "Colabeler",
+  "description": "Colabeler",
+  "license": "CC0-1.0",
+  "main": "./src/index.js",
+  "releaseInfo": {
+    "zh-CN": {
+      "add": [],
+      "fix": [
+        "上传文件速度优化",
+        "标注时显示坐标信息"
+      ]
+    },
+    "en": {
+      "add": [],
+      "fix": [
+        "Upload file speed optimization",
+        "Display coordinate information when labeling"
+      ]
+    }
+  },
+  "repository": "http://gitlab.shenjian.io/client/client-label.git",
+  "dependencies": {
+    "electron-updater": "^2.20.1",
+    "jschardet": "^1.6.0",
+    "knex": "^0.14.6",
+    "lodash": "^4.17.4",
+    "mongodb": "^3.0.7",
+    "mustache": "^2.1.0",
+    "needle": "^2.2.1",
+    "save-pixels": "^2.3.4",
+    "underscore": "^1.8.3",
+    "utf8": "^2.1.2",
+    "xlsx": "^0.11.3",
+    "xlsx-stream": "^0.1.2"
+  }
+}

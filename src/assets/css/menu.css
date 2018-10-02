@@ -1,0 +1,79 @@
+.main-header{
+    z-index: 2;
+}
+#nav-menu ul
+{
+    width: 180px;
+    margin-top: 1px;
+}
+#nav-menu li{
+    user-select: none;
+    cursor: default;
+    overflow: visible;
+    min-width: 35px;
+}
+#nav-menu label{
+    margin-bottom: 0;
+}
+#nav-menu > li > i,
+#nav-menu > li > label.sublabel{
+    display: none;
+}
+/**
+二级
+**/
+#nav-menu > li li{
+    display: none;
+    width: 180px;
+    text-align: left;
+    height: 30px;
+    line-height: 30px;
+    position: relative;
+}
+#nav-menu > li li.hidden{
+    display: none;
+}
+#nav-menu > li li.disabled{
+    opacity: 0.4;
+}
+#nav-menu li li > i.icon{
+    float: left;
+    display: block;
+    width: 25px;
+    height: 30px;
+    font-size: 12px;
+    text-align: center;
+}
+
+#nav-menu li li > label:first-of-type{
+    display: block;
+    float: left;
+}
+#nav-menu li li > i.indicator,
+#nav-menu li li > label.sublabel{
+    display: block;
+    float: right;
+    margin-right: 10px;
+}
+
+#nav-menu > li.expand > ul > li{
+    display: block;
+}
+#nav-menu > li li.separator{
+    height: 1px;
+    width: 170px;
+    margin-left: 5px;
+}
+/**
+三级
+**/
+#nav-menu > li > ul > li ul{
+    margin-top: 0;
+    box-shadow: 0 2px 2px #000;
+    position: absolute;
+    left: 178px;
+    z-index: 2;
+}
+#nav-menu > li > ul > li:not(.disabled):hover li{
+    display: block;
+}

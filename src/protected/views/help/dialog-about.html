@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html class="{{platform}} {{locales.lang}}">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" type="text/css" href="../../../assets/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../assets/plugins/jquery-toast/jquery-toast.css">
+
+    <link rel="stylesheet" type="text/css" href="../../../assets/css/dialog.css">
+</head>
+<body class="dialog" id="dialog-help-about">
+<header class="dialog-header">
+    <div class="title">{{locales.help_about_title}}</div>
+    <ul class="nav-window" id="nav-window">
+        <li class="btn-transition btn-exit"><i class="fs fs-close"></i></li>
+    </ul>
+</header>
+<div class="content-wrapper">
+    <div class="icon">
+        <img src="../../../assets/image/ic_launcher.png" />
+    </div>
+    <div class="title">{{locales.app_name}}</div>
+    <div class="version">{{locales.app_version}} v{{app_version}}</div>
+    <ul class="contact">
+        <li><i class="fs fs-homepage"></i>{{locales.home_page}}</li>
+        <li><i class="fs fs-mail"></i>{{locales.contact_email}}</li>
+        <li class="hide zh-CN-show"><i class="fs fs-qq"></i>3508047295</li>
+    </ul>
+</div>
+<footer class="dialog-footer">
+    <div class="copyright">
+        CopyRight 2017-2018 ShenJian.io
+    </div>
+</footer>
+<script>window.$ = window.jQuery = require('../../../assets/plugins/jquery/jquery-3.2.1.min.js');</script>
+<script>window.i18n = new(require('../../../../locales/i18n.js'));</script>
+<script src='../../../assets/plugins/mCustomScrollbar/jquery.mCustomScrollbar.js'></script>
+<script src='../../../assets/plugins/jquery/jquery.ease.js'></script>
+
+<!--bootstrap js-->
+<script src="../../../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="../../../assets/plugins/lodash/lodash.min.js"></script>
+<script src="../../../assets/plugins/jquery-toast/jquery-toast.js"></script>
+
+<script src='../../../assets/js/components/core.js'></script>
+<script src='../../../assets/js/components/dialog/dialog.js'></script>
+<script src='../../../assets/js/components/lodash-ext/lodash-ext.js'></script>
+<script src='../../../assets/js/components/stack/stack.js'></script>
+<script src='../../../assets/js/components/icheck/icheck.js'></script>
+
+</body>
+</html>

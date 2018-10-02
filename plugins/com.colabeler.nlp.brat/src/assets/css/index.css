@@ -1,0 +1,343 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+.measure-text{
+    position: absolute;
+    visibility: hidden;
+    height: auto;
+    width: auto;
+    white-space: nowrap;
+    font-size: 10px;
+}
+.btn{
+    background-color: #eee;
+    font-size: 12px;
+    width: 60px;
+    height: 30px;
+    line-height: 30px;
+    display: inline-block;
+    color: #000;
+    text-decoration: none;
+    border-radius: 3px;
+    text-align: center;
+    cursor: pointer;
+    padding: 0;
+}
+.btn.btn-primary{
+    color: #fff;
+    border: 1px solid #117cd8;
+    background-color: #117cd8;
+}
+#preview{
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    flex: 1;
+    overflow: auto;
+    background-color: #ffffff;
+    width: 100%;
+    height: 100%;
+
+}
+
+#preview::-webkit-scrollbar
+{
+    width: 10px;
+    height:8px;
+    background-color: #F5F5F5;
+}
+#preview::-webkit-scrollbar-track
+{
+    background-color: #F5F5F5;
+}
+#preview::-webkit-scrollbar-thumb {
+    background-color: #a5a5a5;
+}
+
+
+#svg{
+    width: 100%;
+    min-width: 1390px;
+    height: 100%;
+    padding-right: 20px;
+}
+#svg.unselectable{
+    user-select: none;
+    cursor: default;
+}
+#svg g.text{
+    fill: #000;
+}
+#svg .line-num{
+    font-size: 16px;
+    fill:#666;
+}
+#svg .background .background0{
+    stroke: none;
+    fill: #eee;
+}
+#svg .background .background1{
+    stroke: none;
+    fill: #fff;
+}
+#svg .annotation .span{
+    cursor: default;
+}
+#svg .annotation .span text{
+    font-size: 12px;
+    pointer-events: none;
+}
+#svg .annotation .span path{
+    fill: none;
+    stroke-width: 0.5;
+    stroke: grey;
+}
+
+#svg .annotation .arc path{
+    fill: none;
+    stroke: black;
+}
+#svg .annotation .arc text{
+    text-anchor: middle;
+    font-size: 12px;
+    dominant-baseline: middle;
+    cursor: default;
+    user-select: none;
+}
+
+
+
+/*********************
+*
+*    弹出框
+*
+***********************/
+.modal .modal-dialog{
+    width: 350px;
+    min-height: 150px;
+    vertical-align: middle;
+    margin-top: 80px;
+    background: transparent;
+
+}
+.modal.modal-ajax .modal-dialog{
+    background: #ffffff;
+}
+
+.modal .modal-content{
+    background-color: #ffffff;
+    border-radius: 0;
+}
+.modal .modal-content.overlay{
+    height:254px;
+    text-align: center;
+    line-height: 254px;
+    /*background: url("../image/loading.gif") center no-repeat;*/
+}
+.modal .modal-header{
+    min-height: 16px;
+    padding: 12px;
+    border: 0;
+}
+.modal-header .close{
+    font-size: 21px;
+    font-weight: 700;
+    opacity: 0.2;
+    outline: none;
+    border: 0;
+}
+.modal .close-dialog{
+    position: absolute;
+    right: 0;
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    font-size: 35px;
+    color: #999;
+    text-align: center;
+    z-index: 999;
+    cursor: pointer;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+.modal .close-dialog:hover{
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+.modal .modal-title h4{
+    color:#666666;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 700;
+    margin: 0;
+    margin-left: 15px;
+    line-height: 1.42857143;
+}
+.modal .modal-body{
+    padding: 30px 15px;
+}
+.modal .modal-footer{
+    text-align: center;
+    border-top: 0;
+    padding: 14px;
+    padding-top: 0;
+    zoom: 1;
+    overflow: auto;
+}
+.modal .modal-footer .btn-gray{
+    min-width: 78px;
+    margin-right: 40px;
+    font-size: 12px;
+}
+.modal .modal-footer .btn-primary{
+    min-width: 78px;
+    margin: 0;
+    font-size: 12px;
+}
+.modal .modal-footer .btn-primary-light{
+    min-width: 78px;
+    margin: 0;
+    font-size: 12px;
+}
+
+.dialog-annotation fieldset{
+    border: 1px solid #a6c9e2;
+    border-radius: 5px;
+    font-weight: bold;
+    -webkit-padding-before: 0.35em;
+    -webkit-padding-start: 0.75em;
+    -webkit-padding-end: 0.75em;
+    -webkit-padding-after: 0.625em;
+}
+.dialog-annotation fieldset legend{
+    font-weight: bold;
+    font-size: 90%;
+    border-radius: 3px;
+    background-color: #70a8d2;
+    color: white;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    width: 40px;
+    margin-bottom: 0;
+}
+.dialog-annotation .selector{
+    display: flex;
+    border: 1px solid #a6c9e2;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    margin-top: 5px;
+    padding: 5px 10px;
+    height: 300px;
+}
+.dialog-annotation .selector .item{
+    margin-left: 16px;
+    white-space: nowrap;
+    font-size: 12px;
+}
+.dialog-annotation .selector .item span{
+    display: inline-block;
+    margin-left: 3px;
+    padding: 0 2px;
+    border-radius: 3px;
+}
+
+.dialog-new-T .selector>div{
+    width: 50%;
+}
+.dialog-new-T .selector p{
+    font-weight: bold;
+    font-size: 90%;
+    color: #2e6e9e;
+    margin-bottom: 5px;
+}
+.dialog-new-T .selector .scroller{
+    height: 200px;
+    padding-top: 10px;
+    border: 1px dashed #ccc;
+    overflow: auto;
+}
+.dialog-new-T .wrapper_lower_label {
+    margin-top: 0.5em;
+}
+.dialog-new-T .label-like {
+    font-family: monospace;
+    font-weight: bold;
+    font-size: 90%;
+    color: #2e6e9e;
+}
+.dialog-new-T .attributes{
+    overflow: auto;
+    height: 30px;
+}
+.dialog-new-T .attributes .attribute{
+    display: inline-block;
+    margin-top: 10px;
+    margin-right: 20px;
+}
+.dialog-new-T .attributes .attribute input{
+    vertical-align: top;
+}
+.dialog-new-T .attributes .attribute select:focus{
+    outline-color: #2e6e9e;
+}
+.dialog-new-arc .selector{
+    height: 200px;
+}
+#commentpopup {
+    font-family: 'Liberation Sans', Verdana, Arial, Helvetica, sans-serif;
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 0.95;
+    padding: 10px;
+    display: none;
+    border: 1px outset #000000;
+    background-color: #f5f5f9;
+    color: #000000;
+    z-index: 20;
+    box-shadow: 5px 5px 5px #aaaaaa;
+    border-radius: 3px;
+    max-width: 80%;
+    text-align: left;
+}
+#commentpopup .comment_type_id_wrapper {
+    padding-right: 2em;
+}
+#commentpopup .comment_id {
+    vertical-align: top;
+    float: right;
+    font-size: 75%;
+    font-family: monospace;
+    color: #333333;
+}
+#commentpopup .comment_text {
+    font-weight: bold;
+}
+.drag_stroke{
+    display: none;
+    stroke:#000;
+    pointer-events: none;
+}

@@ -1,0 +1,297 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html, body,h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, *{
+    font-family: NotoSansHans-Regular,AvenirNext-Regular,arial,Hiragino Sans GB,"Microsoft Yahei","Hiragino Sans GB","WenQuanYi Micro Hei",sans-serif;
+}
+body{
+    display: flex;
+}
+#preview{
+    margin: 0 auto;
+    height: 100%;
+    text-align: center;
+    position: relative;
+    flex: 1;
+    background-color: #111;
+    overflow: hidden;
+}
+#preview.drawable{
+    cursor: none;
+}
+#canvas{
+    transition: transform 0.4s ease-in-out;
+    position: relative;
+    left: 0;
+    right:0;
+}
+#canvas > img {
+    margin: 0 auto;
+    height: 100%;
+}
+#cursor{
+    border-radius: 50%;
+    position: absolute;
+    width:10px;
+    height:10px;
+    background-color: #333;
+    margin-left: -5px;
+    margin-top: -5px;
+}
+#preview.movable #cursor{
+    display: none !important;
+}
+#overlay{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 2;
+    cursor: default;
+}
+#overlay.drawable{
+    cursor: none;
+}
+#overlay.movable{
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+}
+#overlay.movable:active{
+    cursor: grabbing;
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
+}
+
+#overlay > .shape{
+    overflow: hidden;
+    position: absolute;
+    cursor: move;
+    user-select: none;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    opacity: 0.6;
+}
+#overlay > .shape.active{
+    opacity: 0.9;
+}
+#overlay > .shape.forefront{
+    z-index: 9999 !important;
+}
+
+#overlay.movable > .shape,
+#overlay.drawable > .shape{
+    pointer-events: none;
+}
+#overlay.drawable > .shape.drawing{
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
+#result{
+    width: 250px;
+    flex: none;
+    height: 100%;
+    position: relative;
+    text-align: center;
+    background-color: #eee;
+    display: flex;
+    flex-direction: column;
+}
+#result-header{
+    flex: none;
+    height: 30px;
+    background-color: black;
+    color: gainsboro;
+    text-align: center;
+    font-size: 14px;
+    line-height: 30px;
+}
+#result-footer{
+    background-color: #868686;
+    font-size: 12px;
+    height: 20px;
+    line-height: 20px;
+    color: white;
+    cursor: pointer;
+}
+#result-footer:before{
+    content:"+";
+}
+#result-list{
+    flex: 1;
+    list-style: none;
+    overflow-x:hidden;
+    overflow-y:auto;
+}
+#result-list::-webkit-scrollbar {
+    width: 5px;
+}
+#result-list > li{
+    width: 100%;
+    height: 40px;
+    position: relative;
+    display: flex;
+}
+#result-list > li.selected{
+    background-color: #d8d8d8;
+}
+#result-list > li .item-remove{
+    width: 50px;
+    line-height: 40px;
+}
+#result-list > li .item-remove i{
+    cursor: pointer;
+}
+#result-list > li .item-remove i:hover{
+    color: gray;
+}
+#result-list > li .color-box{
+    width: 15px;
+    height: 15px;
+    margin: 10px;
+    background-color: #333;
+    border: 2px solid white;
+    pointer-events: none;
+}
+#result-list > li .select-box{
+    width: 160px;
+    position: relative;
+}
+#result-list > li .select-box select{
+    width: 160px;
+    height: 32px;
+}
+#result-list > li .select2-container
+{
+    height: 30px;
+    border: 1px dashed #ccc;
+    margin: 5px;
+    outline: none;
+    font-size: 12px;
+    text-align: left;
+}
+#result-list > li .select2-selection{
+    border: 0;
+    outline: none;
+}
+
+#brush-controls{
+    position: absolute;
+    bottom: 140px;
+    background-color: gainsboro;
+    height: 80px;
+    width: 30px;
+}
+
+#brush-controls button{
+    width: 100%;
+    border: 0;
+    background-color: darkgrey;
+    height: 20px;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    outline: none;
+}
+#brush-controls .size{
+    height: 40px;
+    line-height: 40px;
+    font-size: 18px;
+    width: 100%;
+    display: block;
+    text-align: center;
+}
+/**********************
+*
+*  Select2样式调整
+*
+***********************/
+.select-input{
+    border: 1px dashed #ccc;
+    padding: 0 0 0 10px;
+    height: 32px;
+    display: block;
+    outline: none;
+    position: absolute;
+    width: 160px;
+    top: 5px;
+    left: 5px;
+}
+.select-input.hidden{
+    display: none;
+}
+.select2-dropdown{
+    border: 1px solid #d2d6de;
+    border-radius: 0;
+    font-size: 12px;
+}
+.select2-container--default .select2-results__option{
+    color:#666666;
+}
+.select2-container--default .select2-results__option .option-input
+{
+    margin-left:16px;
+}
+.select2-container--default .select2-results__option .option-img
+{
+    width: 12px;
+    position: absolute;
+    top:9px;
+}
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+    background-color: #3f9fe8;
+    color: white;
+}
+.select2-container--default .select2-results__option[aria-selected=true]{
+    background-color: #f7f7f7;
+    color:#666666;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice{
+    color: #666666;
+    background: #f7f7f7;
+    border: 1px solid #dddddd;
+    position: relative;
+    padding-right: 20px;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove{
+    cursor: pointer;
+    position: absolute;
+    right: .1em;
+    top: 50%;
+    margin-top: -9px;
+    line-height: 17px;
+    color: #333;
+    font-size: 16px;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove:hover{
+    color: #666;
+}
+.select2-container--default .select2-results__option[role='group'] .select2-results__group
+{
+    background-color: #eee;
+    color: black;
+    font-weight: 600;
+}
+
+#result-list > li.active .select2-container{
+    border: 1px solid crimson;
+}
+#result-list > li.active .select-input{
+    border: 1px solid crimson;
+}
+#result-list .mCSB_inside > .mCSB_container
+{
+    margin-right: 0;
+}
+#result-list .mCSB_scrollTools{
+    width: 4px;
+}

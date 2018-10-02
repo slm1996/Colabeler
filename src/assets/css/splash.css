@@ -1,0 +1,7 @@
+@import url("common.css");
+body > img{
+    width: 540px;
+    height: 320px;
+    user-select: none;
+    pointer-events: none;
+}

@@ -1,0 +1,39 @@
+{
+  "name": "{{locales.plugin_name}}",
+  "description": "Text Classification",
+  "author": "Colabeler",
+  "version": "0.0.1",
+  "identifier": "com.colabeler.nlp.classification",
+  "homepage_url": "http://www.colabeler.com",
+  "manifest_version": 1,
+  "icon":"src/assets/image/icon.svg",
+  "group":"{{locales.group_name}}",
+  "inputs":[
+    {
+      "name":"source",
+      "label":"{{locales.inputs_source}}",
+      "type":"folder.text"
+    },
+    {
+      "name":"classify_value",
+      "label":"{{locales.inputs_classify}}",
+      "type":"string",
+      "default":"{{locales.inputs_classify_default}}"
+    },
+    {
+      "name":"classify_count",
+      "label":"{{locales.inputs_count}}",
+      "type":"int32",
+      "default":"1"
+    }
+  ],
+  "outputs":[
+    {
+      "name":"brat-ann",
+      "js":"src/assets/js/export.js",
+      "ext":"ann"
+    }
+  ],
+  "main":"src/index.html",
+  "default_locale":"en"
+}

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="{{platform}}">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" type="text/css" href="../../../assets/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href='../../../assets/plugins/jquery-toast/jquery-toast.css'>
+    <link rel="stylesheet" type="text/css" href='../../../assets/js/components/icheck/icheck.css'>
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" type="text/css" href="../../../assets/css/dialog.css">
+</head>
+<body id="dialog-project-export" class="dialog"  data-project-id="{{project_id}}">
+<header class="dialog-header">
+    <div class="title">{{locales.project_export_title}}</div>
+    <ul class="nav-window" id="nav-window">
+        <li class="btn-transition btn-exit"><i class="fs fs-close"></i></li>
+    </ul>
+</header>
+<div class="content-wrapper">
+    <!-- 输出方式 -->
+    <div class="export-type-title">
+        <span>{{locales.project_export_type_title}}</span>
+    </div>
+
+    <div class="export-type">
+        <!-- 导出到本地 -->
+        <div class="export-local-title">
+            <span>{{locales.project_export_local_title}}</span>
+        </div>
+        <!--导出到本地的类型-->
+        <div class="local-type">
+            {{#export}}
+            <div class="local-type-title" data-type="xml">
+                <span>XML</span>
+                <div class="selected-bg selected-show"></div>
+                <i class="fs fs-ok selected-icon selected-show"></i>
+            </div>
+            {{/export}}
+            {{^export}}
+            <div class="local-type-title selected" data-type="xml">
+                <span>XML</span>
+                <div class="selected-bg selected-show"></div>
+                <i class="fs fs-ok selected-icon selected-show"></i>
+            </div>
+            {{/export}}
+            <div class="local-type-title" data-type="json">
+                <span>JSON</span>
+                <div class="selected-bg selected-show"></div>
+                <i class="fs fs-ok selected-icon selected-show"></i>
+            </div>
+            <div class="local-type-title" data-type="mongodb">
+                <span>MongoDB</span>
+                <div class="selected-bg selected-show"></div>
+                <i class="fs fs-ok selected-icon selected-show"></i>
+            </div>
+        </div>
+        {{#export}}
+        <div class="local-type">
+            <div class="local-type-title selected" data-type="{{export}}">
+                <span>{{export}}</span>
+                <div class="selected-bg selected-show"></div>
+                <i class="fs fs-ok selected-icon selected-show"></i>
+            </div>
+        </div>
+        {{/export}}
+        <!--上传到数据源-->
+        <div class="export-local-title">
+            <span>{{locales.project_upload_data_title}}</span>
+        </div>
+        <!--上传到数据源的类型-->
+        <div class="local-type">
+            <div class="local-type-title upload-data-title" data-type="upload-data">
+                <span>{{locales.menu_server_upload}}</span>
+                <div class="selected-bg selected-show"></div>
+                <i class="fs fs-ok selected-icon selected-show"></i>
+            </div>
+            <div class="check-login">
+                <span class="upload-data-tips">{{locales.menu_server_upload_login}}</span>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="dialog-footer">
+    <div class="export-type-title">
+        <span>{{locales.project_export_save_to}}</span>
+    </div>
+    <!-- 选择地址和确认导出 -->
+    <div class="export-address">
+        <input class="address-text" type="text" value="" readonly >
+        <a href="#" class="choose-address">...</a>
+        <a class="btn btn-primary btn-export">{{locales.project_export_ok}}</a>
+    </div>
+</footer>
+<script>window.$ = window.jQuery = require('../../../assets/plugins/jquery/jquery-3.2.1.min.js');</script>
+<script>window.i18n = new(require('../../../../locales/i18n.js'));</script>
+<!--bootstrap js-->
+<script src="../../../assets/plugins/pouch/pouchdb.js"></script>
+<script src='../../../assets/js/components/core.js'></script>
+<script src='../../../assets/js/components/icheck/icheck.js'></script>
+<script src='../../../assets/js/components/stack/stack.js'></script>
+<script src='../../../assets/js/project.js'></script>
+<script src='../../../assets/js/project-data.js'></script>
+<script src='../../../assets/plugins/jquery-toast/jquery-toast.js'></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "plugin_name":"图像分类",
+  "group_name":"机器视觉",
+
+  "inputs_source":"选择图片文件夹",
+  "inputs_classify":"分类值(逗号分隔)",
+  "inputs_classify_default":"花,鸟,鱼,虫",
+  "inputs_count":"一张图几个分类",
+
+  "page_notEmpty":"分类值不能为空",
+  "page_invalid":"不是设定的分类"
+}

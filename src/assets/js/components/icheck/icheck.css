@@ -1,0 +1,53 @@
+/* iCheck plugin Minimal skin, blue
+----------------------------------- */
+.icheckbox,
+.iradio {
+    display: inline-block;
+    *display: inline;
+    vertical-align: middle;
+    margin: 0;
+    padding: 0;
+    width: 14px;
+    height: 14px;
+    border: none;
+    cursor: pointer;
+}
+.icheckbox i,
+.iradio i{
+    color: #999;
+    position: absolute;
+    left: 0;
+    top: 2px;
+    width: 12px;
+    height: 12px;
+    display: none;
+}
+.icheckbox i.default,
+.iradio i.default{
+    display: block;
+}
+.icheckbox.checked i.checked,
+.iradio.checked i.checked{
+    display: block;
+}
+
+
+.icheckbox.checked i,
+.iradio.checked i{
+    color: #1ec1ec;
+}
+.icheckbox.hover i,
+.iradio.hover i{
+    color: #24e8ff;
+}
+.icheckbox.active i,
+.iradio.active i{
+    color: #189abd;
+}
+
+.icheckbox.disabled i.checked,
+.iradio.disabled i.checked,
+.icheckbox.disabled i.default,
+.iradio.disabled i.default{
+    color: #999;
+}

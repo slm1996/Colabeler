@@ -1,0 +1,23 @@
+{
+  "plugin_name":"实体关系标注",
+  "group_name":"自然语言处理",
+
+  "inputs_source":"文本文件夹",
+  "inputs_entity":"实体定义（逗号分隔）",
+  "inputs_entity_default":"人,公司",
+  "inputs_relation":"关系定义",
+  "inputs_relation_default":"家庭 Arg1:人,Arg2:人\\n雇佣 Arg1:公司,Arg2:人",
+  "inputs_event":"事件定义",
+  "inputs_event_default":"结婚 丈夫:人,妻子:人\\n破产 Com:公司",
+  "inputs_attribute":"属性定义",
+  "inputs_attribute_default":"年龄<人>:10|20|30|40\\n上市<公司>:true|false\\n积极的<event>",
+
+  "page_notCross":"不能交叉选择",
+
+  "cancel":"取消",
+
+  "new_annotation":"新建标注",
+  "delete_annotation":"删除标注",
+  "delete_annotation_confirm":"确认要删除当前标注吗?",
+  "delete_annotation_error":"请先删除该标注上的关系和事件!"
+}

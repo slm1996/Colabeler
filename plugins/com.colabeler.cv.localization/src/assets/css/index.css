@@ -1,0 +1,405 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html, body,h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, *{
+    font-family: NotoSansHans-Regular,AvenirNext-Regular,arial,Hiragino Sans GB,"Microsoft Yahei","Hiragino Sans GB","WenQuanYi Micro Hei",sans-serif;
+}
+body{
+    display: flex;
+}
+#preview{
+    margin: 0 auto;
+    height: 100%;
+    text-align: center;
+    position: relative;
+    flex: 1;
+    background-color: #111;
+    overflow: hidden;
+}
+#preview.drawable{
+    cursor: crosshair;
+}
+#canvas{
+    transition: transform 0.4s ease-in-out;
+    position: relative;
+    left: 0;
+    right:0;
+    cursor: inherit;
+}
+
+#canvas > img {
+    margin: 0 auto;
+    height: 100%;
+}
+#position-number{
+    width: 80px;
+    height: 25px;
+    border: 1px solid #b3b3b3;
+    background-color: #000000;
+    border-radius: 3px;
+    box-sizing: border-box;
+    text-align: center;
+    line-height: 25px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 100;
+    display: none;
+}
+#position-number #number{
+    font-size: 12px;
+    color: #ffffff;
+}
+#overlay{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 2;
+    cursor: default;
+}
+#overlay.loading{
+    display: none;
+}
+#overlay.drawable{
+    cursor: crosshair;
+}
+#overlay.movable{
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+}
+#overlay.movable:active{
+    cursor: grabbing;
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
+}
+
+#overlay circle.circle{
+    r:2;
+    fill: #ffe9bd;
+}
+#overlay circle.control{
+    r:1;
+    fill:black;
+}
+#overlay line.control{
+    stroke:rgb(99,99,99);
+    stroke-width:1;
+}
+#overlay div.circle{
+    width: 4px;
+    height: 4px;
+    border-radius: 2px;
+    background-color:#ffe9bd;
+}
+#overlay .shape{
+    overflow: visible;
+}
+#overlay.drawable .circle{
+    pointer-events: none;
+}
+#overlay.movable > .shape,
+#overlay.drawable > .shape{
+    pointer-events: none;
+}
+#overlay > .shape.forefront{
+    z-index: 9999 !important;
+}
+/*
+包括anchor
+*/
+#anchor{
+    width: 10px;
+    height: 10px;
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 2;
+    margin-left: -5px;
+    margin-top: -5px;
+    cursor: copy;
+}
+#anchor.anchoring{
+    display: block;
+}
+#anchor .circle{
+    cx:5;
+    cy:5;
+}
+#anchor.anchoring:hover .circle{
+    fill:#dbdc7e;
+}
+
+/*
+矩形高亮
+*/
+#overlay > .rect{
+    border: 1px solid crimson;
+    position: absolute;
+    cursor: move;
+    user-select: none;
+}
+#overlay:not(.drawable) > .rect:hover{
+    background-color: rgba(255, 255, 255, 0.2);
+}
+#overlay > .rect.selected{
+    border-color: #8edc21;
+    background-color:  rgba(142, 220, 33, 0.3);
+}
+#overlay > .rect.active
+{
+    border-color: #dbdc7e;
+}
+/*
+其他形状高亮
+*/
+#overlay > .shape path
+{
+    stroke:crimson;
+    stroke-width:1;
+    fill:transparent;
+}
+#overlay:not(.drawable) > .shape:hover path{
+    fill:rgba(255, 255, 255, 0.2);
+}
+#overlay > .shape.selected path{
+    stroke: #8edc21;
+    fill: rgba(142, 220, 33, 0.3);
+}
+#overlay > .shape.active path
+{
+    stroke: #dbdc7e;
+}
+
+
+/**********************
+*
+* 矩形
+*
+************************/
+#overlay.movable > .rect,
+#overlay.drawable > .rect{
+    pointer-events: none;
+}
+
+#overlay > .rect .circle
+{
+    position: absolute;
+}
+
+#overlay > .rect > .circle.left.top{
+    left: -2px;
+    top:-2px;
+    cursor: nwse-resize;
+}
+#overlay > .rect > .circle.right.top{
+    right: -2px;
+    top:-2px;
+    cursor: nesw-resize;
+}
+#overlay > .rect > .circle.right.bottom{
+    right: -2px;
+    bottom:-2px;
+    cursor: nwse-resize;
+}
+#overlay > .rect > .circle.left.bottom{
+    left: -2px;
+    bottom:-2px;
+    cursor: nesw-resize;
+}
+
+/**********************
+*
+* 多边形
+*
+************************/
+#overlay > .polygon{
+    position: absolute;
+    cursor: move;
+    user-select: none;
+}
+
+
+#overlay.drawable > .polygon.drawing{
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/**********************
+*
+* 曲线
+*
+************************/
+#overlay > .curve{
+    position: absolute;
+    cursor: move;
+    user-select: none;
+}
+#overlay.drawable > .curve.drawing{
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+#overlay.drawable > .curve.drawing .circle.last{
+    pointer-events: all;
+    cursor: -webkit-image-set(url("../image/cursor/cut.svg") 1x, url("../image/cursor/cut@2x.svg") 2x) 0 0, auto;
+}
+
+#result{
+    width: 200px;
+    flex: none;
+    height: 100%;
+    position: relative;
+    text-align: center;
+    background-color: #eee;
+    display: flex;
+    flex-direction: column;
+}
+#result-header{
+    flex: none;
+    height: 30px;
+    background-color: black;
+    color: gainsboro;
+    text-align: center;
+    font-size: 14px;
+    line-height: 30px;
+}
+#result-list{
+    flex: 1;
+    list-style: none;
+    overflow-x:hidden;
+    overflow-y:auto;
+}
+#result-list::-webkit-scrollbar {
+    width: 5px;
+}
+#result-list > li{
+    width: 100%;
+    height: 35px;
+    position: relative;
+}
+#result-list > li select{
+    width: 190px;
+}
+#result-list > li .select2-container
+{
+    height: 30px;
+    border: 1px dashed #ccc;
+    margin: 5px;
+    outline: none;
+    font-size: 12px;
+    text-align: left;
+}
+#result-list > li .select2-selection{
+    border: 0;
+    outline: none;
+}
+
+/**********************
+*
+*  Select2样式调整
+*
+***********************/
+.select-input{
+    border: 1px dashed #ccc;
+    padding: 0 0 0 10px;
+    height: 32px;
+    display: block;
+    outline: none;
+    position: absolute;
+    width: 190px;
+    top: 5px;
+    left: 5px;
+}
+.select-input.hidden{
+    display: none;
+}
+.select2-dropdown{
+    border: 1px solid #d2d6de;
+    border-radius: 0;
+    font-size: 12px;
+}
+.select2-container--default .select2-results__option{
+    color:#666666;
+}
+.select2-container--default .select2-results__option .option-input
+{
+    margin-left:16px;
+}
+.select2-container--default .select2-results__option .option-img
+{
+    width: 12px;
+    position: absolute;
+    top:9px;
+}
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+    background-color: #3f9fe8;
+    color: white;
+}
+.select2-container--default .select2-results__option[aria-selected=true]{
+    background-color: #f7f7f7;
+    color:#666666;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice{
+    color: #666666;
+    background: #f7f7f7;
+    border: 1px solid #dddddd;
+    position: relative;
+    padding-right: 20px;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove{
+    cursor: pointer;
+    position: absolute;
+    right: .1em;
+    top: 50%;
+    margin-top: -9px;
+    line-height: 17px;
+    color: #333;
+    font-size: 16px;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove:hover{
+    color: #666;
+}
+.select2-container--default .select2-results__option[role='group'] .select2-results__group
+{
+    background-color: #eee;
+    color: black;
+    font-weight: 600;
+}
+
+#result-list > li.active .select2-container{
+    border: 1px solid crimson;
+}
+#result-list > li.active .select-input{
+    border: 1px solid crimson;
+}
+#result-list .mCSB_inside > .mCSB_container
+{
+    margin-right: 0;
+}
+#result-list .mCSB_scrollTools{
+    width: 4px;
+}
+
+#horizontal-line{
+    height:1px;
+    width: 100%;
+    background-color: #999;
+    position: absolute;
+    pointer-events: none;
+}
+#vertical-line{
+    width:1px;
+    height: 100%;
+    background-color: #999;
+    position: absolute;
+    pointer-events: none;
+}

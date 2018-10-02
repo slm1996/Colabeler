@@ -1,0 +1,171 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+*::-webkit-scrollbar
+{
+    width: 5px;
+    background-color: #F5F5F5;
+}
+*::-webkit-scrollbar-track
+{
+    background-color: #F5F5F5;
+}
+*::-webkit-scrollbar-thumb {
+    background-color: #a5a5a5;
+}
+*::-webkit-scrollbar:horizontal
+{
+    height: 5px;
+    background-color: #F5F5F5;
+}
+*::-webkit-scrollbar-track:horizontal
+{
+    background-color: #F5F5F5;
+}
+*::-webkit-scrollbar-thumb:horizontal  {
+    background-color: #a5a5a5;
+}
+#waveform{
+    background: black;
+    flex: 1;
+}
+#waveform > wave{
+    top: 50%;
+    margin-top: -30px;
+    overflow: hidden !important;
+}
+#controls{
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+}
+#controls > .btns{
+    flex: 1;
+    text-align: left;
+}
+#controls > .btns > button{
+    display: inline-block;
+    margin: 5px;
+    color: white;
+    font-size: 15px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    background-color: black;
+    outline: none;
+    cursor: pointer;
+    border: 1px solid darkgrey;
+}
+#controls > .btns > button:hover{
+    border: 1px solid gainsboro;
+}
+#controls > .btns > button:disabled{
+    color: gray;
+    border-color: gray;
+}
+#controls > #minimap{
+    flex: 1;
+}
+#tracks{
+    height: 65px;
+    overflow-y: visible;
+    overflow-x: scroll;
+}
+.track{
+    height: 60px;
+    background-color: floralwhite;
+    display: flex;
+    flex-direction: row;
+    overflow: visible;
+    position: relative;
+}
+.track-item{
+    height: 100%;
+    overflow: visible;
+    text-align: center;
+    position: relative;
+}
+.track-item .track-remove{
+    display: block;
+    position: absolute;
+    right: 0;
+    top:0;
+    width: 12px;
+    height:12px;
+    background-color: #888;
+    color: white;
+    font-size: 12px;
+    cursor: pointer;
+}
+.track-item .track-remove:hover{
+    background-color: #333;
+}
+.track-item .track-remove i{
+    pointer-events: none;
+    font-size: 12px;
+}
+.track-item input{
+    width: 50%;
+    height: 20px;
+    cursor: text;
+    margin: 20px auto;
+    background-color: transparent;
+    border: 0;
+    border-bottom: 1px solid #e4e4e4;
+    text-align: center;
+}
+.track-item input:hover{
+    background-color: floralwhite;
+}
+.track-item input:focus{
+    outline: none;
+    background-color: floralwhite;
+    border-bottom-color: orange;
+}
+.track-item.moving{
+    cursor: ew-resize;
+}
+.track-item:hover{
+    background-color: wheat;
+}
+.track-splitter{
+    width: 2px;
+    height: 100%;
+    position: absolute;
+    background-color: #a0a0a0;
+    cursor: ew-resize;
+    margin-left: -1px;
+}
+#track-cursor{
+    position: absolute;
+    left: 0;
+    top:0;
+    width: 1px;
+    background-color: gray;
+    pointer-events: none;
+}
+#track-highlight{
+    position: absolute;
+    left: 0;
+    top:0;
+    background-color: pink;
+    opacity: 0.3;
+    pointer-events: none;
+}
+#splitter-cursor{
+    position: absolute;
+    left: 0;
+    top:0;
+    width: 2px;
+    background-color: #a0a0a0;
+    pointer-events: none;
+    margin-left: -1px;
+}

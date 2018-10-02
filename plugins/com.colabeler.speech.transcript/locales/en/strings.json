@@ -1,0 +1,9 @@
+{
+  "plugin_name":"Speech Transcript",
+  "group_name":"Speech",
+
+  "inputs_source":"Audio Folder",
+
+  "page_confirm_delete":"Sure to delete this label?",
+  "page_last_label":"Can not delete the last one"
+}

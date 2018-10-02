@@ -1,0 +1,12 @@
+{
+  "plugin_name":"Classification",
+  "group_name":"Computer Vision",
+
+  "inputs_source":"Image Folder",
+  "inputs_classify":"Classes Name(Separated by comma)",
+  "inputs_classify_default":"Cat,Dog",
+  "inputs_count":"Number of classes",
+
+  "page_notEmpty":"Class can not be empty",
+  "page_invalid":" is not a valid class name"
+}

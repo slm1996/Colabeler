@@ -1,0 +1,9 @@
+{
+  "plugin_name":"音频转录",
+  "group_name":"音频识别",
+
+  "inputs_source":"选择音频文件夹",
+
+  "page_confirm_delete":"确定要删除这一段标注吗?",
+  "page_last_label":"最后一个不能删除"
+}

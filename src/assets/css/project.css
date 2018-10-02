@@ -1,0 +1,261 @@
+.section-project-list{
+    overflow-y: scroll;
+}
+.section-project-list .project-list li{
+    width: 200px;
+    height: 120px;
+    float: left;
+    background-color: #0f0f0f;
+    border: 1px dashed gray;
+    padding: 10px;
+    cursor: pointer;
+    margin-left: 10px;
+    margin-top: 10px;
+    position: relative;
+}
+.section-project-list .project-list li.item-tutorial{
+    padding: 0;
+}
+.section-project-list .project-list li.item-tutorial .video
+{
+    background: #257ed2 url(../image/app_tutorial.png) no-repeat;
+    background-size: 100%;
+    height: 94px;
+    color: white;
+    padding-top: 10px;
+}
+.section-project-list .project-list li.item-tutorial .video div{
+    text-align: center;
+    padding: 5px;
+    font-size: 14px;
+}
+.section-project-list .project-list li.item-tutorial .video i{
+    font-size: 36px;
+}
+.section-project-list .project-list li.item-tutorial .text
+{
+    height: 26px;
+    text-align: center;
+    font-size: 14px;
+    line-height: 26px;
+    color: gainsboro;
+}
+.section-project-list .project-list li.item-add{
+    background-color: transparent;
+}
+.section-project-list .project-list li.item-add:hover{
+    background-color: #0f0f0f;
+}
+.section-project-list .project-list li.item-add div{
+    width: 100%;
+    text-align: center;
+    color: #717171;
+    padding: 10px;
+    font-size: 14px;
+}
+.section-project-list .project-list li.item-add:hover div{
+    color: gainsboro;
+}
+.section-project-list .project-list li.item-add i{
+    font-size: 50px;
+}
+
+.section-project-list .project-list li > img{
+    width: 20px;
+    position: absolute;
+}
+.section-project-list .project-list li .title
+{
+    height: 40px;
+    line-height: 20px;
+    font-size: 15px;
+    color: gainsboro;
+    width: 170px;
+    overflow: hidden;
+    text-indent: 25px;
+}
+.section-project-list .project-list li .info{
+    margin-top: 10px;
+    color: gray;
+}
+.section-project-list .project-list li:hover .title{
+    color: white;
+}
+
+.section-project-list .project-list li .ico-remove{
+    display: none;
+    position: absolute;
+    right: 10px;
+    top:10px;
+    color: #c85050;
+}
+.section-project-list .project-list li:hover .ico-remove{
+    display: block;
+    transform: scale(1.2);
+}
+
+.section-project-dashboard .image-wrapper{
+    height: 100%;
+    overflow: hidden;
+    margin: 0 auto;
+    position: relative;
+    display: inline-block;
+}
+.section-project-dashboard .image-wrapper img
+{
+    height: 100%;
+    margin: 0 auto;
+}
+
+
+
+.section-project-dashboard .section-content{
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+}
+.section-project-dashboard .section-content > .plugin-wrapper{
+    flex: 1;
+    display: flex;
+}
+.section-project-dashboard .section-content iframe{
+    flex:1;
+    overflow: hidden;
+    border: 0;
+    width: 100%;
+}
+.section-project-dashboard .section-footer{
+    flex: none;
+    height: 80px;
+    text-align: center;
+    display: flex;
+}
+.section-project-dashboard .section-footer .footer-half{
+    width: 50%;
+    height: 100%;
+    display: flex;
+}
+.section-project-dashboard .section-footer .footer-half .btn-wrapper{
+    width: 80px;
+    height: 80px;
+}
+
+.section-project-dashboard .section-footer  .footer-half .collection
+{
+    flex-grow: 1;
+    margin: 0;
+    text-align: left;
+}
+.section-project-dashboard .section-footer  .half-left .collection{
+    text-align: right;
+}
+.section-project-dashboard .section-footer  .half-right .collection > li:first-of-type{
+    display: none;
+}
+.section-project-dashboard .section-footer .collection > li{
+    width: 60px;
+    height: 60px;
+    margin: 10px 5px;
+    background-color: black;
+    display: inline-block;
+    opacity: 0.6;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+}
+.section-project-dashboard .section-footer .collection > li:hover{
+    top:-5px;
+    opacity: 1;
+}
+.section-project-dashboard .section-footer .collection > li img{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: 100%;
+    width: auto;
+    transform: translate(-50%,-50%);
+}
+.section-project-dashboard .section-footer .btn{
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    margin: 10px;
+}
+.section-project-dashboard .section-footer .btn i{
+    font-size: 30px;
+    margin: 0;
+}
+
+.section-project-dashboard .section-footer .progressbar{
+    position: absolute;
+    left: 20px;
+    bottom: 10px;
+    opacity: 0.6;
+    background-color: #111;
+    width: 200px;
+    height: 40px;
+    line-height: 40px;
+    color: gray;
+    border-radius: 2px;
+    user-select: none;
+    display: flex;
+}
+.section-project-dashboard .section-footer .progressbar > .left-padding
+{
+    width: 10px;
+}
+.section-project-dashboard .section-footer .progressbar > label
+{
+    text-align: center;
+    width: 60px;
+}
+.section-project-dashboard .section-footer .progressbar > .progressbar-track
+{
+    width: 100px;
+    background-color: #a0a0a0;
+    height: 2px;
+    margin-top: 19px;
+    position: relative;
+    flex-grow: 1;
+}
+.section-project-dashboard .section-footer .progressbar-track > .progressbar-fill
+{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background-color: #117cd8;
+}
+.section-project-dashboard .section-footer .zoombar{
+    position: absolute;
+    right: 20px;
+    bottom: 10px;
+    opacity: 0.6;
+    background-color: #111;
+    width: 140px;
+    height: 40px;
+    line-height: 40px;
+    color: gray;
+    border-radius: 2px;
+    user-select: none;
+}
+.section-project-dashboard .section-footer .zoombar:hover{
+    opacity: 1;
+}
+.section-project-dashboard .section-footer .zoombar label
+{
+    margin: 0;
+    width: 40px;
+    text-align: center;
+}
+.section-project-dashboard .section-footer .zoombar i{
+    cursor: pointer;
+}
+.section-project-dashboard .section-footer .zoombar i:hover
+{
+    color: gainsboro;
+}
+.section-project-dashboard .section-footer .zoombar .fs-zoom-fit
+{
+    margin-left: 15px;
+}

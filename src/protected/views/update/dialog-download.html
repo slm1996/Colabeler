@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="{{platform}}">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" type="text/css" href="../../../assets/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href='../../../assets/plugins/jquery-toast/jquery-toast.css'>
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" type="text/css" href="../../../assets/css/dialog.css">
+</head>
+<body class="dialog-downloading" id="dialog-downloading" >
+<header class="dialog-header">
+    <div class="title">{{locales.update_downloading_title}}</div>
+    <ul class="nav-window" id="nav-window">
+        <li class="btn-transition btn-exit"><i class="fs fs-close"></i></li>
+    </ul>
+</header>
+<div class="content-wrapper">
+    <div class="progress">
+        <div class="progress-bar progress-bar-striped active" role="progressbar"
+             aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%" >0%</div>
+    </div>
+</div>
+
+<script>window.$ = window.jQuery = require('../../../assets/plugins/jquery/jquery-3.2.1.min.js');</script>
+<script src='../../../assets/plugins/jquery-toast/jquery-toast.js'></script>
+
+<!--bootstrap js-->
+<script src='../../../assets/js/components/core.js'></script>
+<script src='../../../assets/js/components/dialog/dialog.js'></script>
+<script src='../../../assets/js/update.js'></script>
+</body>
+</html>

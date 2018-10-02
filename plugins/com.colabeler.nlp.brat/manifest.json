@@ -1,0 +1,54 @@
+{
+  "name": "{{locales.plugin_name}}",
+  "description": "Text Annotation",
+  "author": "Colabeler",
+  "version": "0.0.1",
+  "identifier": "com.colabeler.nlp.brat",
+  "homepage_url": "http://www.colabeler.com",
+  "manifest_version": 1,
+  "icon":"src/assets/image/icon.svg",
+  "group":"{{locales.group_name}}",
+  "inputs":[
+    {
+      "name":"source",
+      "label":"{{{locales.inputs_source}}}",
+      "type":"folder.text"
+    },
+    {
+      "name":"entity_value",
+      "label":"{{{locales.inputs_entity}}}",
+      "type":"string",
+      "default":"{{{locales.inputs_entity_default}}}"
+    },
+    {
+      "name":"relation_value",
+      "label":"{{{locales.inputs_relation}}}",
+      "type":"string",
+      "default":"{{{locales.inputs_relation_default}}}",
+      "textarea":true
+    },
+    {
+      "name":"event_value",
+      "label":"{{{locales.inputs_event}}}",
+      "type":"string",
+      "default":"{{{locales.inputs_event_default}}}",
+      "textarea":true
+    },
+    {
+      "name":"attribute_value",
+      "label":"{{{locales.inputs_attribute}}}",
+      "type":"string",
+      "default":"{{{locales.inputs_attribute_default}}}",
+      "textarea":true
+    }
+  ],
+  "outputs":[
+    {
+      "name":"brat-ann",
+      "js":"src/assets/js/export.js",
+      "ext":"ann"
+    }
+  ],
+  "main":"src/index.html",
+  "default_locale":"en"
+}

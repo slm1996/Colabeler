@@ -1,0 +1,55 @@
+{
+  "name": "{{locales.plugin_name}}",
+  "description": "Pixel-wise Segmentation",
+  "author": "Colabeler",
+  "version": "0.0.1",
+  "identifier": "com.colabeler.cv.segmentation",
+  "homepage_url": "http://www.colabeler.com",
+  "manifest_version": 1,
+  "icon":"src/assets/image/icon.svg",
+  "group":"{{locales.group_name}}",
+  "toolbar":[
+    {
+      "label":"{{locales.toolbar_move}}",
+      "icon":"fs-hand",
+      "accelerator":"space",
+      "role":"move",
+      "selectable":true
+    },
+    {
+      "label":"{{locales.toolbar_eraser}}",
+      "icon":"fs-eraser",
+      "accelerator":"E",
+      "role":"eraser",
+      "selectable":true
+    },
+    {
+      "label":"{{locales.toolbar_paint}}",
+      "icon":"fs-paint",
+      "accelerator":"B",
+      "role":"paint",
+      "selectable":true
+    }
+  ],
+  "inputs":[
+    {
+      "name":"source",
+      "label":"{{locales.inputs_source}}",
+      "type":"folder.image"
+    },
+    {
+      "name":"classify_value",
+      "label":"{{locales.inputs_classify_value}}",
+      "type":"string",
+      "default":"{{locales.inputs_classify_value_default}}"
+    }
+  ],
+  "outputs":[
+    {
+      "name":"object",
+      "type":"pascal-voc"
+    }
+  ],
+  "main":"src/index.html",
+  "default_locale":"en"
+}

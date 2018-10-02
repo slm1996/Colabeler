@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="{{platform}}">
+<head>
+    <meta charset="utf-8">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" type="text/css" href="../../../assets/plugins/bootstrap/css/bootstrap.min.css">
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" type="text/css" href="../../../assets/css/dialog.css">
+    <link rel="stylesheet" type="text/css" href='../../../assets/plugins/jquery-toast/jquery-toast.css'>
+</head>
+<body id="dialog-cloud" data-project-id="{{project_id}}">
+<header class="dialog-header">
+    <div class="title">{{locales.main_index_convert_cloud}}</div>
+    <ul class="nav-window" id="nav-window">
+        <li class="btn-transition btn-exit"><i class="fs fs-close"></i></li>
+    </ul>
+</header>
+<div class="content-wrapper">
+    <p class="confirm-text">{{locales.main_index_convert_sure}}</p>
+</div>
+<footer class="dialog-footer">
+    <input type="hidden" class="project-id" value="{{project_id}}">
+    <input type="hidden" class="project-name" value="{{project_name}}">
+    <input type="hidden" class="key" value="{{key}}">
+    <input type="hidden" class="secret" value="{{secret}}">
+    <input type="hidden" class="outputs" value="{{outputs}}">
+    <a class="btn btn-primary" id="btn-ok">{{locales.main_confirm_ok}}</a>
+</footer>
+<div class="import-progress">
+    <span class="upload-text">
+        <span class="upload-index"></span>
+        <span>{{locales.project_uploaded}}</span>
+    </span>
+</div>
+<script>window.$ = window.jQuery = require('../../../assets/plugins/jquery/jquery-3.2.1.min.js');</script>
+<script>window.i18n = new(require('../../../../locales/i18n.js'));</script>
+<!--bootstrap js-->
+<script src="../../../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="../../../assets/plugins/lodash/lodash.min.js"></script>
+<script src="../../../assets/plugins/jquery-toast/jquery-toast.js"></script>
+<script src="../../../assets/plugins/pouch/pouchdb.js"></script>
+<script src="../../../assets/plugins/pouch/pouchdb.find.js"></script>
+
+<script src='../../../assets/js/components/core.js'></script>
+<script src='../../../assets/js/components/lodash-ext/lodash-ext.js'></script>
+<script src='../../../assets/js/components/icheck/icheck.js'></script>
+<script src='../../../assets/js/components/stack/stack.js'></script>
+
+<script src="../../../assets/js/account.js"></script>
+</body>
+</html>

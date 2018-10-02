@@ -1,0 +1,8 @@
+{
+  "plugin_name":"图片转录",
+  "group_name":"机器视觉",
+
+  "inputs_source":"选择图片文件夹",
+
+  "page_notEmpty":"转录不能为空"
+}

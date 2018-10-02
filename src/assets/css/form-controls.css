@@ -1,0 +1,29 @@
+.form-group{
+    width: 100%;
+    padding: 0 10px;
+    color: #b3b3b3;
+}
+.form-group input[type='text'],
+.form-group input[type='password']{
+    background-color: #0f0f0f;
+    border: 1px solid gray;
+    width: 100%;
+    height: 30px;
+    padding: 5px 10px;
+}
+
+.form-group textarea{
+    width: 100%;
+    background-color: #0f0f0f;
+    border: 1px solid gray;
+    padding: 5px 10px;
+}
+
+.form-control-number{
+    width: 50px;
+}
+
+input[disabled],textarea[disabled] {
+    background: #444!important;
+    cursor: not-allowed!important;
+}

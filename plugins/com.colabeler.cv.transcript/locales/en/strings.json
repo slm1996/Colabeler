@@ -1,0 +1,8 @@
+{
+  "plugin_name":"Transcript",
+  "group_name":"Computer Vision",
+
+  "inputs_source":"Image Folder",
+
+  "page_notEmpty":"Transcription can not be empty"
+}

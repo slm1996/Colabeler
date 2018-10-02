@@ -1,0 +1,706 @@
+
+@import url("./iconfont/iconfont.css");
+
+/************************
+*   Predefined Const
+************************/
+*{
+    margin:0;
+    padding:0;
+    font-family: NotoSansHans-Regular,AvenirNext-Regular,arial,Hiragino Sans GB,"Microsoft Yahei","Hiragino Sans GB","WenQuanYi Micro Hei",sans-serif;
+}
+
+html, body{
+    font-size: 12px;
+    font-weight: 400;
+    min-height: 100%;
+    height:100%;
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+b, strong{
+    font-weight: 400;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+input, textarea,select{
+    outline:none;
+    border:none;
+}
+label{
+    font-weight: normal;
+}
+::-webkit-input-placeholder {
+    color:#999;
+    font-size: 13px;
+}
+*, *:after, *:before {
+    box-sizing: border-box;
+}
+.font-12{
+    font-size: 12px;
+}
+.form-control{
+    border-radius: 0;
+    box-shadow: none;
+    height: 28px;
+    line-height: 28px;
+    float: right;
+    max-width: 440px;
+    margin-right: 20px;
+}
+/*按钮*/
+.btn{
+    padding:0px 10px;
+    border-radius:0;
+    box-shadow: none;
+    -webkit-app-region: no-drag;
+}
+.btn.active{
+    box-shadow: none;
+}
+.btn-primary{
+    color: #fff;
+    text-align: center;
+    border: 1px solid #0F97FF;
+    background-color: #0F97FF;
+    transition-duration: .4s;
+    transition-property: color , background-color,border-color;
+}
+.btn-primary:hover{
+    border:1px solid #0F97FF;
+    background-color: #2BACFE;
+}
+.btn-primary:active{
+    border:1px solid #0E87E4 !important;
+    background-color: #0E87E4 !important;
+}
+.btn-primary-light{
+    text-align: center;
+    border: 1px solid #0f96fe;
+    background-color: #fff;
+    color: #0f96fe;
+    border-radius:0 !important;
+    transition: color , background-color,border-color;
+    transition: .4s;
+}
+.btn-primary-light:hover{
+    border-color: #2BACFE;
+    color: #2BACFE;
+    background-color: #e4f0fa;
+}
+.btn-primary-light:active{
+    border-color: #2BACFE;
+    color: #2BACFE;
+}
+.btn-default{
+    border-radius: 0;
+    font-size: 14px;
+    color: #333;
+    background-color: #f7f7f7;
+    border-color:#B7B7B7;
+}
+.btn-default:hover{
+    background-color: #E4F0FA;
+    border-color: #387BB2;
+}
+.btn-default:active:focus,
+.btn-default:focus,
+.btn-default:active{
+    color: #666666;
+    background-color: #CCE4F7;
+    border:1px solid #387BB2;
+    box-shadow: none;
+}
+/*按钮类样式转换*/
+.btn-transition{
+    transition: color , background-color;
+    transition-timing-function: ease-out;
+    transition-duration: .2s;
+}
+/*icheck*/
+.icheckbox.checked i,
+.iradio.checked i{
+    color: #0F97FF;
+}
+.icheckbox.hover i,
+.iradio.hover i{
+    color: #0F97FF;
+}
+.icheckbox.active i,
+.iradio.active i{
+    color: #0F97FF;
+}
+.icheckbox, .iradio{
+    vertical-align: text-top;
+}
+.progress-bar{
+    background-color: #0f97ff;
+}
+/*动画旋转*/
+@keyframes loading-roll {
+    0% {
+        transform:rotate(0deg);
+    }
+    100% {
+        transform:rotate(360deg);
+    }
+}
+/*提交中*/
+.submit-running{
+    background-color: #999;
+    border-color: #999;
+    pointer-events: none;
+}
+.submit-running i{
+    display: inline-block !important;
+    animation: loading-roll .8s infinite;
+    animation-timing-function: linear;
+    transform-origin: center;
+}
+/*tooltip*/
+.tooltip-inner{
+    max-width: 336px;
+    background-color: #666 !important;
+}
+.tooltip.top .tooltip-arrow{
+    border-top-color: #666;
+}
+.tooltip.right .tooltip-arrow{
+    border-right-color: #666;
+}
+.tooltip.bottom .tooltip-arrow{
+    border-bottom-color: #666;
+}
+.tooltip.left .tooltip-arrow{
+    border-left-color: #666;
+}
+.tooltip-inner span{
+    display: block;
+}
+/*webkit滚动条diy*/
+::-webkit-scrollbar
+{
+    width: 2px;
+    background-color: #F5F5F5;
+}
+::-webkit-scrollbar-track
+{
+    background-color: #F5F5F5;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #a5a5a5;
+}
+/*dialog 模板css*/
+@keyframes fade-in {
+    0% {opacity: 0;}
+    40% {opacity: 0;}
+    100% {opacity: 1;}
+}
+body {
+    animation: fade-in;
+    animation-duration: 0.3s;
+    -webkit-animation:fade-in 0.3s;
+    margin: 0 auto ;
+    background-color: transparent;
+}
+.dialog{
+    color: #000;
+    border:1px solid  #E4E9EF;
+    border-top:2px solid  #0F97FF;
+    box-shadow: 2px 1px 1px -1px #BFC4CD;
+    background-color: white;
+}
+.dialog.shadow{
+    margin: 1px 3px;
+    box-shadow: 0 3px 15px -4px #BFC4CD;
+}
+.dialog textarea,input,select{
+    border: 1px solid  #C3C4C4;
+    padding: 8px;
+}
+.dialog textarea:hover,input:hover,select:hover{
+    border-color: #0E87E4;
+}
+.dialog .dialog-header{
+    -webkit-app-region: drag;
+    height: 45px;
+}
+.dialog .dialog-header h5{
+    display: block;
+    width: auto;
+    margin: 0 60px 0 25px;
+    line-height: 45px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.dialog-header .btn-exit{
+    -webkit-app-region:no-drag;
+    user-select: none;
+    position: absolute;
+    right: -1px;
+    top: 2px;
+    width: 30px;
+    height: 27px;
+    text-align: center;
+    line-height: 28px;
+    font-size: 25px;
+    color: gray;
+    cursor: pointer;
+    transition: all .3s;
+}
+.dialog-header .btn-mini{
+    -webkit-app-region:no-drag;
+    display: inline-block;
+    width: 27px;
+    height: 27px;
+    cursor: pointer;
+    position: absolute;
+    right: 30px;
+    top: 2px;
+    text-align: center;
+    line-height: 27px;
+    cursor: pointer;
+}
+.dialog-header .btn-mini:hover{
+    color: #000;
+    background-color: #d8dde4;
+}
+.dialog.shadow .dialog-header .btn-exit{
+    right:3px;
+}
+.dialog-header .btn-exit:hover{
+    background-color: #FE4747;
+    color: #fff;
+    cursor: pointer;
+}
+/**************
+mac窗口操作 操作
+***************/
+.darwin .dialog-header h5{
+    margin: 0 20px 0 50px;
+    text-align: center;
+}
+.darwin .dialog-header .nav-window:hover i{
+    visibility: visible !important;
+}
+.darwin .dialog-header .nav-window .op-item{
+    float: left;
+    width: 13px;
+    height: 13px;
+    border-radius: 6px ;
+    overflow: hidden;
+    line-height: 13px;
+    padding:2px;
+    display: inline-block;
+    position: absolute;
+}
+.darwin .dialog-header .op-item i{
+    visibility: hidden;
+    font-size: 9px;
+    line-height: 9px;
+    font-weight: bolder;
+    margin: 0 auto;
+    width: 9px;
+    height: 9px;
+    float: left;
+    margin-left: -1px;
+    text-align: center;
+}
+/*关闭*/
+.darwin .dialog-header .btn-exit{
+    left: 8px;
+    top: 6px !important;
+    background-color: #ff6158;
+    border: 1px solid #e34741;
+}
+.darwin .dialog-header .btn-exit:active{
+    background-color: #bf4943;
+}
+.darwin .dialog-header .btn-exit i{
+    color:#4d0000;
+    margin-top: -2px;
+}
+/*最小化*/
+.darwin .dialog-header .btn-mini{
+    left: 28px;
+    top: 6px !important;
+    background-color: #ffc12e;
+    border: 1px solid #e2a226;
+}
+.darwin .dialog-header .btn-mini:active {
+    background-color: #bf8f23;
+}
+.darwin .dialog-header .btn-mini i{
+    color:#995700;
+    margin-top: -2px;
+}
+.dialog .dialog-content{
+    margin: 0 auto;
+    padding: 0 10px 20px;
+}
+.dialog .dialog-footer{
+    background-color: #F7F7F7;
+    height: 48px;
+    line-height: 48px;
+}
+.dialog .dialog-footer .btn{
+    margin: 5px 15px;
+    width: 75px;
+    height: 35px;
+    line-height: 35px;
+}
+/***************************
+page publish
+****************************/
+#dialog-publish-data .dialog-content{
+    user-select: none;
+    height: 100%;
+    font-size: 12px;
+    font-weight:normal ;
+    padding: 0 10px 50px;
+}
+#dialog-publish-data .dialog-content .group-title,
+#dialog-publish-data .dialog-content .group-setting{
+    margin-left: 15px;
+    margin-bottom: 30px;
+}
+#dialog-publish-data .dialog-content .group-title.anchor-extra{
+    margin-top:35px;
+}
+#dialog-publish-data .dialog-content textarea{
+    resize: none;
+}
+#dialog-publish-data .dialog-content select{
+    width:300px;
+}
+#dialog-publish-data .dialog-content input[name='name']{
+    width:448px;
+}
+#dialog-publish-data .dialog-content a{
+    color: inherit;
+    text-decoration: none;
+    cursor: default;
+}
+#dialog-publish-data .dialog-content .setting{
+    margin-bottom: 12px;
+    margin-left: 15px;
+}
+#dialog-publish-data .dialog-content .setting.required:before{
+    font-family: "iconfont" !important;
+    content: "\e700";
+    font-size: 20px;
+    font-style: normal;
+    position: absolute;
+    margin-left: -20px;
+    color: #e83f3f;
+    margin-top: 0px;
+}
+#dialog-publish-data .dialog-content .setting .setting-name{
+    display: inline-block;
+    padding: 10px 10px 2px 0;
+    width: 100px;
+}
+#dialog-publish-data .dialog-content .setting .setting-name.app-info{
+    vertical-align: top;
+}
+#dialog-publish-data .dialog-content .setting .dropMenu{
+    display: inline-block;
+    width: 280px;
+    height: 30px;
+    line-height: 30px;
+    background-color: transparent;
+}
+#dialog-publish-data .dialog-content .setting .sub-setting{
+    margin-left: 30px;
+    margin-top: 7px;
+}
+#dialog-publish-data .dialog-content .setting .dropMenu .dropdown-menu{
+    width: 280px;
+    max-height: 300px;
+    overflow: auto;
+}
+#dialog-publish-data .dialog-content .setting.select-db-type .dropMenu .dropdown-menu{
+    max-height: 250px;
+    overflow: auto;
+}
+#dialog-publish-data .dialog-content .setting .dropMenu:active{
+    outline-color: transparent !important;
+}
+#dialog-publish-data .dialog-content .setting  button:focus{
+    outline-color: transparent !important;
+}
+#dialog-publish-data .dialog-content .setting  button:active{
+    box-shadow: none;
+}
+#dialog-publish-data .dialog-content .setting .dropMenu .dropdown-menu .disabled{
+    color: #999 !important;
+}
+#dialog-publish-data .dialog-content .setting .dropMenu .btn{
+    width: 100%;
+    text-align: left;
+    height: 25px;
+    line-height: 25px;
+}
+#dialog-publish-data .dialog-content .setting .dropMenu .btn .caret{
+    float: right;
+    margin-top: 10px;
+    margin-right: 5px;
+}
+#dialog-publish-data .dialog-content .setting .dropMenu.dropup .btn .caret{
+    transform: rotate(180deg);
+}
+#dialog-publish-data .dialog-content .setting.select-db-type .dropdown-menu>.active>a{
+    background-color: #f5f5f5;
+}
+#dialog-publish-data .dialog-content .setting.inputs-connect-info{
+    margin-left: 40px;
+}
+#dialog-publish-data .dialog-content .step-title{
+    font-size: 17px;
+    font-weight: bolder;
+    margin-left: 15px;
+    margin-bottom: 15px;
+    margin-top: 5px;
+}
+/*连接*/
+#dialog-publish-data .dialog-content .step-config-connnect .inputs-connect-info .info{
+    margin-bottom: 14px;
+    width: auto;
+    height: auto;
+    overflow: hidden;
+    line-height: 30px;
+}
+#dialog-publish-data .dialog-content .step-config-connnect .inputs-connect-info .charset .input-name{
+    width: 75px;
+    display: inline-block;
+}
+#dialog-publish-data .dialog-content .step-config-connnect .db-name-list{
+    margin: 0 20px 10px 40px;
+    height: 50px;
+    overflow: visible;
+}
+#dialog-publish-data .dialog-content .step-config-connnect .db-name-list .input-name{
+    width: 75px;
+    display: inline-block;
+}
+#dialog-publish-data .dialog-content .step-config-connnect .db-name-list .input-group {
+    width: 340px;
+    display: inline-block;
+    position: relative;
+    padding-top: 12px;
+    margin-left: 0;
+}
+#dialog-publish-data .dialog-content .step-config-connnect .db-name-list .input-group input{
+    width: 279px;
+    margin-right: 0;
+    border-right-width: 0;
+}
+#dialog-publish-data .dialog-content .step-config-connnect .db-name-list .input-group button{
+    height: 28px;
+}
+#dialog-publish-data .dialog-content .step-config-connnect .db-name-list .input-group .dropdown-menu{
+    top: 40px;
+    width: 310px;
+    max-height: 210px;
+    overflow: auto;
+}
+#dialog-publish-data .dialog-content .step-config-connnect .db-name-list .input-group .dropdown-menu a{
+    display: block;
+}
+#dialog-publish-data .dialog-content .step-config-connnect .db-name-list .test-db-connect{
+    display: inline-block;
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    margin-top: 10px;
+    float: right;
+    text-align: center;
+    border: 1px solid #999;
+    cursor: pointer;
+}
+#dialog-publish-data .dialog-content .step-config-connnect .db-name-list .test-db-connect i{
+    display: none;
+    height: 18px;
+    line-height: 18px;
+    vertical-align: inherit;
+}
+#dialog-publish-data .dialog-content .step-config-connnect .operation-log{
+    margin: 10px 15px;
+    font-size: 15px;
+}
+#dialog-publish-data .dialog-content .step-config-connnect .operation-log textarea{
+    width: 544px;
+}
+#dialog-publish-data .step-list >section{
+    display: none;
+}
+#dialog-publish-data .step-list >section.active{
+    display: block;
+}
+#dialog-publish-data .step-list >section.step-field-mapping .make-mapping{
+    margin-right:15px;
+}
+#dialog-publish-data .step-list >section.step-field-mapping .make-mapping .table-wraper{
+    max-height: 400px;
+    margin-top: 5px;
+    overflow: auto;
+}
+#dialog-publish-data .step-list >section.step-field-mapping .table-wraper .table{
+    font-size: 12px;
+    margin-bottom: 0;
+    text-align: center;
+}
+#dialog-publish-data .step-list >section.step-field-mapping .table th,
+#dialog-publish-data .step-list >section.step-field-mapping .table td{
+    text-align: center;
+    line-height: 15px;
+    font-weight: 400;
+    padding:5px 2px;
+    text-overflow: ellipsis;
+    overflow: visible;
+    white-space: nowrap;
+    vertical-align: middle;
+}
+#dialog-publish-data .step-list >section.step-field-mapping .table td div{
+    outline:none;
+}
+#dialog-publish-data .step-list >section.step-field-mapping .table {
+    display: none;
+}
+#dialog-publish-data .step-list >section.step-field-mapping .table tbody tr td:first-child i{
+    color: #ddd;
+    visibility: hidden;
+}
+#dialog-publish-data .step-list >section.step-field-mapping .table.active {
+    display: table;
+}
+#dialog-publish-data .step-list >section.step-field-mapping .table tbody tr:hover td:first-child i{
+    color: #000;
+    visibility: visible;
+}
+#dialog-publish-data .step-list >section.step-field-mapping .table tbody tr.active td:first-child i{
+    color: #000;
+    visibility: visible;
+}
+
+#dialog-publish-data .step-list >section.step-field-mapping .table td .dropMenu{
+    width: 100%;
+    height: auto;
+    line-height: inherit;
+}
+#dialog-publish-data .step-list >section.step-field-mapping .table td .dropMenu .text{
+    width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+    margin-top: -1px;
+    text-align: center;
+}
+#dialog-publish-data .step-list >section.step-field-mapping .table td .dropMenu .caret{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    float: inherit;
+    margin-top: 0;
+    margin-right: 0;
+}
+#dialog-publish-data .step-list >section.step-field-mapping .table thead th{
+    position: sticky;
+    top: -1px;
+    z-index: 100;
+    background-color: #f7f7f7;
+}
+#dialog-publish-data .step-list >section.step-field-mapping .table thead th:nth-of-type(4){
+    width: 150px;
+}
+#dialog-publish-data .step-list >section.step-field-mapping .table thead th:nth-of-type(5){
+    width: 100px;
+}
+#dialog-publish-data .step-list >section.step-field-mapping .save-config .config-name{
+    width: 470px;
+    height: 25px;
+    margin-left: 7px;
+}
+#dialog-publish-data .step-list >section.step-ready-publish{
+    margin: 10px 18px;
+}
+#dialog-publish-data .step-list >section.step-field-mapping .save-config{
+    position: absolute;
+    bottom: 50px;
+    left: 10px;
+    right: 30px;
+    height: 40px;
+    line-height: 40px;
+    margin-bottom: 0;
+}
+#dialog-publish-data .step-list >section.step-ready-publish .publish-log .log-wrapper{
+    margin-top: 10px;
+    display: block;
+    width: 540px;
+    height: 400px;
+    border: 1px solid #C3C4C4;
+    padding: 8px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+#dialog-publish-data .step-list >section.step-ready-publish .publish-log .log-wrapper:hover{
+    border-color: #0E87E4;
+}
+#dialog-publish-data .step-list >section.step-ready-publish .publish-log .log-wrapper:focus{
+    outline:none;
+}
+#dialog-publish-data .dialog-footer{
+    line-height: 48px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0 15px;
+    user-select: none;
+}
+#dialog-publish-data .dialog-footer .btn{
+    height: 35px;
+    margin-left: 0px;
+    line-height: 35px;
+    width: 100px;
+}
+#dialog-publish-data .dialog-footer .btn-submit{
+    width: auto;
+    min-width: 75px;
+}
+#dialog-publish-data .dialog-footer .btn-submit i{
+    height: 22px;
+    width: 20px;
+    line-height: 24px;
+    vertical-align: middle;
+}
+#dialog-publish-data  .dialog-content a.del-config{
+    color:#fff;
+    margin-left: 20px;
+}
+
+

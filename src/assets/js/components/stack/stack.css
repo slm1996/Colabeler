@@ -1,0 +1,115 @@
+
+/********
+预定义stack效果
+********/
+.stack ul.stack-nav{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+    border: 0;
+    height: 38px;
+    position: relative;
+    z-index: 10;
+    font-size: 0;
+    letter-spacing: -4px;
+}
+
+.stack li.stack-tab
+{
+    display: inline-block;
+    padding: 10px 15px 6px 15px;
+    margin: 0;
+    border-radius: 0;
+    border: 1px solid #dddddd;
+    border-left: 0;
+    color: #666666;
+    background-color: #f7f7f7;
+    cursor: pointer;
+    height: 39px;
+    font-size: 14px;
+    letter-spacing: 0px;
+    min-width: 96px;
+    text-align: center;
+}
+.stack li.stack-tab:first-of-type
+{
+    border-left: 1px solid #dddddd;
+}
+.stack li.stack-tab:hover
+{
+    background-color: #ffffff;
+}
+
+.stack li.stack-tab.active,
+.stack li.stack-tab.active:focus,
+.stack li.stack-tab.active:hover
+{
+    border-top: 3px solid #3f9fe8;
+    border-right: 1px solid #dddddd;
+    border-bottom: 1px solid white;
+    padding-top: 8px;
+    padding-left: 15px;
+    color: #3f9fe8;
+    background-color: #ffffff;
+}
+.stack-layer{
+    display: none;
+    position: relative;
+}
+
+.stack-layer.active
+{
+    -webkit-animation-name: fadeIn; /*动画名称*/
+    -webkit-animation-duration: 0.2s; /*动画持续时间*/
+    -webkit-animation-iteration-count: 1; /*动画次数*/
+    -webkit-animation-delay: 0s; /*延迟时间*/
+    animation-name: fadeIn; /*动画名称*/
+    animation-duration: 0.2s; /*动画持续时间*/
+    animation-iteration-count: 1; /*动画次数*/
+    animation-delay: 0s; /*延迟时间*/
+    display: block;
+}
+
+@-webkit-keyframes sk-rotatePlane {
+    0% {
+        -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+        transform: perspective(120px) rotateX(0deg) rotateY(0deg); }
+    50% {
+        -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+        transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg); }
+    100% {
+        -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+        transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg); } }
+
+@keyframes sk-rotatePlane {
+    0% {
+        -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+        transform: perspective(120px) rotateX(0deg) rotateY(0deg); }
+    50% {
+        -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+        transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg); }
+    100% {
+        -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+        transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg); } }
+.stack-layer:before{
+    width: 40px;
+    height: 40px;
+    background-color: #333;
+    position:absolute;
+    left:50%;
+    top:50%;
+    margin-left:-20px;
+    margin-top:-20px;
+    -webkit-animation: sk-rotatePlane 1.2s infinite ease-in-out;
+    animation: sk-rotatePlane 1.2s infinite ease-in-out;
+    display: none;
+    content:""
+}
+.stack-layer.ajax-loading{
+    background-color: #f0f0f0;
+    opacity: 0.3;
+}
+.stack-layer.ajax-loading:before{
+    display: block;
+}

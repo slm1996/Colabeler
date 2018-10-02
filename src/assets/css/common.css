@@ -1,0 +1,300 @@
+/************************
+*   Global
+************************/
+@import url("./iconfont/iconfont.css");
+/************************
+*   Predefined Const
+************************/
+
+.c-primary{
+    color: #117cd8;
+}
+.c-primary-light{
+    color: #91C9FF;
+}
+.bgc-primary{
+    background-color: #117cd8;
+}
+
+*{
+    margin:0;
+    padding:0;
+    font-family: NotoSansHans-Regular,AvenirNext-Regular,arial,Hiragino Sans GB,"Microsoft Yahei","Hiragino Sans GB","WenQuanYi Micro Hei",sans-serif;
+}
+*::-webkit-scrollbar
+{
+    width: 4px;
+    background-color: #2f3033;
+}
+*::-webkit-scrollbar-track
+{
+    background-color: #2f3033;
+}
+*::-webkit-scrollbar-thumb {
+    background-color: black;
+}
+html, body{
+    font-size: 12px;
+    font-weight: 400;
+    min-height: 100%;
+    height:100%;
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+b, strong{
+    font-weight: 400;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+input, textarea,select{
+    outline:none;
+    border:none;
+}
+::-webkit-input-placeholder {
+    color:#999;
+    font-size: 13px;
+}
+*, *:after, *:before {
+    box-sizing: border-box;
+}
+
+.underline{
+    text-decoration: underline;
+}
+.inline-block{
+    display: inline-block;
+}
+.text-gray a {
+    color: #d2d6de !important;
+}
+
+.text-gray a:hover {
+    color: #428bca !important;
+}
+
+/* a标签链接的样式 */
+a.text-gray{
+    color: #666666 !important;
+}
+a.text-gray:hover{
+    color: #333333 !important;
+    cursor: pointer;
+}
+a.text-gray:active{
+    color: #333333 !important;
+}
+a.text-gray:focus{
+    color: #666666 !important;
+}
+.text-danger {
+    color: #e83f3f !important;
+}
+.text-success {
+    color: #3f9fe8 !important;
+}
+.text-warning {
+    color: #3f9fe8 !important;
+}
+a i {
+    margin-right: 5px;
+    position: relative;
+}
+
+/* a标签链接的样式 */
+.text-link{
+    color: #1ec1ec;
+}
+.text-link:hover{
+    color: #2590ec;
+    cursor: pointer;
+}
+.text-link:active,
+.text-link:active:focus{
+    color: #0c77d3;
+}
+.text-link:focus{
+    color: #24e8ff;
+}
+.text-link.underline{
+    text-decoration: underline;
+}
+
+
+
+/*按钮*/
+.btn{
+    padding:0px 10px;
+    border-radius:0;
+    box-shadow: none;
+    -webkit-app-region: no-drag;
+}
+.btn.active{
+    box-shadow: none;
+}
+.btn-primary{
+    color: #fff;
+    text-align: center;
+    border: 1px solid #117cd8;
+    background-color: #117cd8;
+    transition: all .4s;
+}
+.btn-primary:hover{
+    border:1px solid #117cd8;
+    background-color: #2590ec;
+}
+.btn-primary:active{
+    border:1px solid #0c77d3 !important;
+    background-color: #0c77d3 !important;
+}
+
+/*form*/
+.form-control{
+    border-radius: 0;
+    box-shadow: none;
+}
+.help-block{
+    margin: 0;
+    padding: 3px 3px 0 3px;
+    height: 15px;
+    opacity: 0;
+}
+.help-block .fs{
+    font-size: 12px;
+}
+.form-group.has-success .checkon{
+    display: inline-block;
+    margin-left: 10px;
+}
+.has-error input[type="text"],
+.has-error input[type="password"],
+.has-error input[type="email"],
+.has-error .select2-selection,
+.has-error textarea
+{
+    border-color: #e83f3f !important;
+}
+.has-error .help-block,
+.has-warning .help-block,
+.has-success .help-block{
+    opacity: 1;
+}
+
+.has-error .help-block{
+    color: #dd4b39;
+    line-height: 12px;
+    font-size: 12px;
+}
+.has-error .help-block:before{
+    font-family: "iconfont" !important;
+    content: "\e775";
+    margin-right: 5px;
+    position: relative;
+    top: 1px;
+    font-style: normal;
+    text-rendering: auto;
+    display: inline-block;
+    -webkit-font-smoothing: antialiased;
+}
+.form-group.has-error > label a i{
+    display: none;
+}
+.has-success .help-block{
+    color: #090;
+}
+.has-warning .help-block{
+    color: #f68300;
+}
+.form-group h5{
+    margin: 0;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 400;
+    display: inline-block;
+}
+.form-group h5>small{
+    color: #999999;
+    margin-left: 5px;
+}
+.form-group h5 > small > i{
+    margin-right: 5px;
+}
+.form-group[required]:before{
+    font-family: "iconfont" !important;
+    font-size: 20px;
+    font-style: normal;
+    content: "\e700";
+    position: absolute;
+    margin-left: -20px;
+    color: #e83f3f;
+    margin-top: -9px;
+}
+.has-success .help-block[for=error]{
+    display: block;
+}
+.has-warning .help-block[for=error]{
+    display: block;
+}
+
+/*按钮类样式转换*/
+.btn-transition{
+    transition: color , background-color;
+    transition-timing-function: ease-out;
+    transition-duration: .2s;
+}
+.btn-loading{
+    pointer-events: none;
+    background-color: gray;
+    border: 1px solid gainsboro;
+}
+
+.icheckbox.checked i,
+.iradio.checked i{
+    color: #117cd8;
+}
+.icheckbox.hover i,
+.iradio.hover i{
+    color: #117cd8;
+}
+.icheckbox.active i,
+.iradio.active i{
+    color: #117cd8;
+}
+.icheckbox, .iradio{
+    vertical-align: text-top;
+}
+
+
+/*多语言显示隐藏*/
+html.en .en-hide{
+    display: none !important;
+}
+html.en .en-show{
+    display: block !important;
+}
+html.zh-CN .zh-CN-hide{
+    display: none !important;
+}
+html.zh-CN .zh-CN-show{
+    display: block !important;
+}

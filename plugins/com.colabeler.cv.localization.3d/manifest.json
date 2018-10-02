@@ -1,0 +1,55 @@
+{
+  "name": "{{locales.plugin_name}}",
+  "description": "Object Localization",
+  "author": "Colabeler",
+  "version": "0.0.1",
+  "identifier": "com.colabeler.cv.localization.3d",
+  "homepage_url": "http://www.colabeler.com",
+  "manifest_version": 1,
+  "icon":"src/assets/image/icon.svg",
+  "group":"{{locales.group_name}}",
+  "toolbar":[
+    {
+      "label":"{{locales.toolbar_move}}",
+      "icon":"fs-hand",
+      "accelerator":"space",
+      "role":"move",
+      "selectable":true
+    },
+    {
+      "label":"{{locales.toolbar_remove}}",
+      "icon":"fs-shape-remove",
+      "accelerator":"Delete",
+      "role":"remove",
+      "disabled":true
+    },
+    {
+      "label":"{{locales.toolbar_cuboid}}",
+      "icon":"fs-cuboid",
+      "accelerator":"C",
+      "role":"cuboid",
+      "selectable":true
+    }
+  ],
+  "inputs":[
+    {
+      "name":"source",
+      "label":"{{locales.inputs_source}}",
+      "type":"folder.image"
+    },
+    {
+      "name":"classify_value",
+      "label":"{{locales.inputs_classify_value}}",
+      "type":"string",
+      "default":"{{locales.inputs_classify_value_default}}"
+    }
+  ],
+  "outputs":[
+    {
+      "name":"object",
+      "type":"pascal-voc"
+    }
+  ],
+  "main":"src/index.html",
+  "default_locale":"en"
+}

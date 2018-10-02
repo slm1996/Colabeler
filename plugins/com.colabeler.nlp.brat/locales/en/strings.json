@@ -1,0 +1,24 @@
+{
+  "plugin_name":"NER",
+  "group_name":"NLP",
+
+  "inputs_source":"Text Folder",
+  "inputs_entity":"Entity definitions(separated by comma)",
+  "inputs_entity_default":"Person,Company",
+  "inputs_relation":"Relation definitions",
+  "inputs_relation_default":"Family Arg1:Person,Arg2:Person\\nEmployment Arg1:Company,Arg2:Person",
+  "inputs_event":"Event definitions",
+  "inputs_event_default":"Marriage Husband:Person,Wife:Person\\nPublic<Company>:true|false\\nPositive<event>",
+  "inputs_attribute":"Attribute definitions",
+  "inputs_attribute_default":"Age<Person>:10|20|30|40\\nPublic<Company>:true|false",
+
+  "page_notCross":"Invalid Selection",
+
+  "cancel":"cancel",
+
+  "new_annotation":"New Annotation",
+  "delete_annotation":"Delete Annotation",
+  "delete_annotation_confirm":"Are you sure to delete this annotation?",
+  "delete_annotation_error":"Please delete the relationship or event on this annotation first!"
+
+}

@@ -1,0 +1,715 @@
+@import url("common.css");
+@import url("form-controls.css");
+body{
+    background-color: #2f3033;
+    display: flex;
+    flex-direction: column;
+}
+
+.dialog-header{
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    flex: none;
+    height: 30px;
+    color: #aeaeae;
+}
+.dialog-header .title{
+    height: 30px;
+    line-height: 30px;
+    flex: 1;
+    -webkit-app-region: drag;
+    user-select: none;
+    text-indent: 40px;
+    font-size: 14px;
+}
+.dialog-header .nav-window{
+    float: right;
+    flex: none;
+    width: 40px;
+}
+
+
+.dialog-header > ul{
+     margin: 0;
+ }
+.dialog-header > ul > li{
+    float: left;
+    height: 30px;
+    width: 40px;
+    line-height: 30px;
+    text-align: center;
+    user-select: none;
+}
+.dialog-header > ul > li:hover{
+    background-color: #434447;
+}
+.dialog-header .nav-window > .btn-exit:hover{
+    background-color: #c85050;
+    color: white;
+}
+/*
+MacOS
+*/
+.darwin .dialog-header{
+    flex-direction: row-reverse;
+}
+.darwin .dialog-header .title{
+    text-indent: -40px;
+}
+.darwin .dialog-header .nav-window >li{
+    width: 12px;
+    height: 12px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    margin-left: 6px;
+    margin-top: 6px;
+}
+.darwin .dialog-header .nav-window > .btn-exit i{
+    display: none;
+    font-size: 8px;
+    line-height: 10px;
+    font-weight: bolder;
+}
+.darwin .dialog-header .nav-window:hover > .btn-exit i{
+    display: inline;
+}
+.darwin .dialog-header .nav-window > .btn-exit{
+    background-color: #ff6158;
+    border: 1px solid #e34741;
+    color:#4d0000;
+    line-height: 8px;
+}
+.darwin .dialog-header .nav-window > .btn-exit:active
+{
+    background-color: #bf4943
+}
+.content-wrapper{
+    flex: 1;
+}
+.dialog-footer{
+    text-align: center;
+    height: 40px;
+    flex: none;
+    padding-bottom: 5px;
+}
+.dialog-footer .btn{
+    display: inline-block;
+    margin-left: 10px;
+    width: 80px;
+    height: 25px;
+    line-height: 25px;
+    margin-top: 5px;
+}
+
+#dialog-confirm .confirm-text{
+    color: gainsboro;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+}
+
+
+#dialog-help-about .content-wrapper .icon{
+    text-align: center;
+    margin-top: 10px;
+}
+#dialog-help-about .content-wrapper .icon img{
+    width: 70px;
+}
+#dialog-help-about .content-wrapper .title,
+#dialog-help-about .content-wrapper .version
+{
+    color: #aeaeae;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+}
+#dialog-help-about .content-wrapper .contact
+{
+    width: 200px;
+    margin: 20px auto;
+}
+#dialog-help-about .content-wrapper .contact li{
+    text-align: left;
+    height: 25px;
+    line-height: 25px;
+    color: #117cd8;
+    font-size: 14px;
+}
+#dialog-help-about .content-wrapper .contact li i{
+    display: inline-block;
+    width: 20px;
+    text-align: center;
+    font-size: 12px;
+}
+#dialog-help-about .content-wrapper .contact li:hover{
+    color:#2f98f8;
+}
+#dialog-help-about .dialog-footer .copyright{
+    color: #666;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+    width: 100%;
+}
+#dialog-project-new{
+    width: 700px;
+    height: 500px;
+}
+#dialog-project-new .content-wrapper .project-type{
+    width: 155px;
+    height: 450px;
+    float: left;
+    background-color: #212226;
+    margin-left: 5px;
+    margin-bottom: 0;
+}
+#dialog-project-new .content-wrapper .project-type li{
+    height: 30px;
+    padding-left: 6px;
+}
+#dialog-project-new .content-wrapper .project-type li:hover,
+#dialog-project-new .content-wrapper .project-type li.active{
+    background-color: #117cd8;
+}
+#dialog-project-new .content-wrapper .project-type li:hover label,
+#dialog-project-new .content-wrapper .project-type li.active label{
+    color: white;
+}
+#dialog-project-new .content-wrapper .project-type li label{
+    color: #bbb;
+    margin-bottom: 0;
+    user-select: none;
+    margin-top: 10px;
+    margin-left: 3px;
+}
+#dialog-project-new .content-wrapper .project-type li img{
+    height: 15px;
+    text-align: center;
+    display: inline-block;
+    margin-top: -3px;
+}
+#dialog-project-new .content-wrapper .project-type li.header{
+    text-align: center;
+    position: relative;
+    height: 30px;
+    margin-bottom: 0;
+    background-color: transparent;
+}
+#dialog-project-new .content-wrapper .project-type li.header:before{
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    height: 1px;
+    width: 100%;
+    background-color: gray;
+}
+#dialog-project-new .content-wrapper .project-type li.header label{
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    background-color: #212226;
+    height: 30px;
+    line-height: 30px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: auto;
+    min-width: 100px;
+    margin-left: -50px;
+    margin-top: 0;
+}
+#dialog-project-new .content-wrapper .project-setting{
+    width: 535px;
+    height: 360px;
+    float: right;
+    margin-right: 5px;
+}
+#dialog-project-new .content-wrapper .project-setting .stack-layer
+{
+    width: 100%;
+    height: 100%;
+}
+#dialog-project-new .content-wrapper .project-setting textarea
+{
+    line-height: 14px;
+}
+
+#dialog-project-data .table-data{
+    color: gainsboro;
+    width: 880px;
+    margin: 0 auto;
+    border: 1px solid gray;
+}
+#dialog-project-data .table-data thead{
+    background-color: #3d3d3d;
+    border: 1px solid gray;
+}
+#dialog-project-data .table-data thead th{
+    font-size: 14px;
+    padding: 5px;
+}
+#dialog-project-data .table-data td{
+    font-size: 12px;
+    padding: 5px;
+    height: 30px;
+    line-height: 30px;
+}
+
+#dialog-project-data .table-data tr:nth-child(even) td{
+    background-color: #3c3c3c;
+}
+
+#dialog-project-data .dialog-footer .btn-export{
+    float: right;
+    margin-right: 10px;
+}
+#dialog-project-data .dialog-footer .pager{
+    color: gainsboro;
+    float: left;
+}
+#dialog-project-data .dialog-footer .pager > div,
+#dialog-project-data .dialog-footer .pager > ul{
+    float: left;
+    margin-left: 20px;
+}
+
+#dialog-project-data .dialog-footer .pager li{
+    font-size: 12px;
+    min-width: 30px;
+    cursor: pointer;
+    user-select: none;
+}
+#dialog-project-data .dialog-footer .pager li.active{
+    cursor: default;
+}
+#dialog-project-data .dialog-footer .pager li:hover{
+    color: white;
+}
+
+#dialog-project-export .content-wrapper label{
+    margin: 0;
+}
+#dialog-project-export .content-wrapper .form-group{
+    display: flex;
+    justify-content: flex-start;
+    padding: 20px 20% 5px;
+    margin: 0;
+}
+#dialog-project-export .content-wrapper .form-group .item{
+    width: 100px;
+}
+#dialog-project-export .content-wrapper  .upload-data-login{
+    margin-left: 10px;
+}
+#dialog-project-export .content-wrapper  .upload-data-check-login{
+    display: none;
+}
+
+#dialog-project-export .content-wrapper .export-type-title{
+    width: 60px;
+    height: 28px;
+    border: 0px solid gray;
+    color: #b3b3b3;
+    text-align: right;
+    line-height: 28px;
+    position: absolute;
+    top: 35px;
+    left: 40px;
+}
+#dialog-project-export .export-type{
+    width: 340px;
+    border: 0px solid gray;
+    position: absolute;
+    top: 35px;
+    left: 120px;
+}
+#dialog-project-export .export-local-title{
+    width: 100%;
+    border-bottom: 1px solid gray;
+    text-align: center;
+}
+#dialog-project-export .export-local-title span{
+    background-color: gray;
+    color: ghostwhite;
+    padding: 2px 3px;
+    border-radius: 2px;
+    position: relative;
+    top: 7px;
+}
+#dialog-project-export .export-type .local-type{
+    width: 100%;
+    border: 0px solid gray;
+    margin: 15px 0px 5px 0px;
+    display: flex;
+    justify-content: space-between;
+}
+#dialog-project-export .local-type .local-type-title{
+    width: 105px;
+    height: 30px;
+    border: 1px solid gray;
+    box-sizing: border-box;
+    color: #b3b3b3;
+    line-height: 30px;
+    text-align: center;
+    cursor: pointer;
+    overflow: hidden;
+}
+#dialog-project-export .local-type .local-type-title.disabled{
+    background-color: gray;
+    pointer-events: none;
+}
+#dialog-project-export .local-type .check-login{
+    display: none;
+}
+#dialog-project-export .local-type .upload-data-tips{
+    display: inline-block;
+    color: #b3b3b3;
+    width: 220px;
+    height: 30px;
+    line-height: 30px;
+}
+#dialog-project-export .local-type .local-type-title.selected{
+    border: 1px solid #2590ec;
+}
+#dialog-project-export .local-type .local-type-title .selected-show{
+    display: none;
+}
+#dialog-project-export .local-type .local-type-title .selected-bg{
+    position: relative;
+    left: 88px;
+    bottom: 10px;
+    width: 21px;
+    height: 13px;
+    background-color: #2590ec;
+    transform: rotate(-40deg);
+}
+#dialog-project-export .local-type .local-type-title .selected-icon{
+    color: ghostwhite;
+    position: relative;
+    bottom: 35px;
+    left: 47px;
+    font-size: 10px;
+}
+#dialog-project-export .local-type .local-type-title.selected .selected-show{
+    display: block;
+}
+#dialog-project-export .dialog-footer .export-type-title{
+    width: 60px;
+    height: 28px;
+    border: 0px solid gray;
+    color: #b3b3b3;
+    text-align: right;
+    line-height: 28px;
+    position: absolute;
+    bottom: 10px;
+    left: 40px;
+}
+#dialog-project-export .dialog-footer .export-address{
+    width: 340px;
+    border: 0px solid gray;
+    position: absolute;
+    bottom: 10px;
+    left: 120px;
+}
+#dialog-project-export .dialog-footer .address-text{
+    width: 218px;
+    height: 25px;
+    border: 1px solid gray;
+    color: #b3b3b3;
+    background-color: #0f0f0f;
+    padding: 0px 5px;
+    position: relative;
+    top: 3px;
+    left: 0px;
+    cursor: pointer;
+}
+#dialog-project-export .dialog-footer .choose-address{
+    width: 25px;
+    height: 25px;
+    border: 1px solid gray;
+    color: #b3b3b3;
+    background-color: #0f0f0f;
+    line-height: 25px;
+    text-align: center;
+    display: inline-block;
+    position: relative;
+    top: 4px;
+    left: -4px;
+    text-decoration: none;
+}
+
+
+#dialog-project-exporting .progress{
+    margin: 20px;
+    margin-bottom: 0;
+}
+#dialog-project-exporting .progress-label
+{
+    color: gainsboro;
+    display: block;
+    margin: 5px 20px;
+}
+
+#dialog-project-exporting .dialog-footer .btn{
+    width: 100px;
+}
+#dialog-project-exporting .dialog-footer .btn i
+{
+    font-size: 13px;
+}
+#dialog-update-confirm .update-content{
+    overflow-y: scroll;
+}
+#dialog-update-confirm .update-content pre{
+    border:0;
+    margin:0;
+    padding:0 5px;
+    background-color:inherit;
+    color:inherit;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+#dialog-update-confirm .dialog-footer .btn{
+    width:100px;
+}
+#dialog-update-confirm .content-wrapper{
+    color: #aeaeae;
+    padding: 30px;
+}
+#dialog-downloading .content-wrapper{
+    padding: 30px;
+}
+
+
+/*dialog-captcha*/
+#dialog-tools-generate-captcha .progress-wrapper{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: none;
+}
+#dialog-tools-generate-captcha .progress-wrapper .progress-generate{
+    position: absolute;
+    top: 40%;
+    width: 100%;
+    text-align: center;
+}
+#dialog-tools-generate-captcha .progress-wrapper .progressing{
+    color: #fff;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+#dialog-cloud .confirm-text,
+#dialog-upload .confirm-text{
+    color: gainsboro;
+    position: relative;
+    top: 38%;
+    transform: translateY(-50%);
+    text-align: center;
+}
+#dialog-upload .progress-wrapper{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: none;
+}
+#dialog-upload .progress-wrapper .progress-generate{
+    position: absolute;
+    top: 40%;
+    width: 100%;
+    text-align: center;
+}
+#dialog-upload .progress-wrapper .progressing{
+    color: #fff;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+#dialog-cloud-success .confirm-text,
+#dialog-upload-success .confirm-text{
+    color: gainsboro;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+}
+#dialog-cloud-success .btn-access,
+#dialog-upload-success .btn-access{
+    color: #1ec1ec;
+    cursor: pointer;
+}
+#dialog-cloud-success .btn-access:hover,
+#dialog-upload-success .btn-access:hover{
+    text-decoration: underline;
+}
+#dialog-upload .confirm-expand{
+    color: gainsboro;
+    position: relative;
+    top: 50%;
+    left: -48px;
+    transform: translateY(-50%);
+    text-align: center;
+}
+#dialog-upload .confirm-expand input {
+    position: relative;
+    top: 2px;
+    cursor: pointer;
+}
+#dialog-upload .confirm-expand label{
+    cursor: pointer;
+    font-weight: normal;
+}
+
+
+#dialog-modify-config{
+    height: 500px;
+}
+#dialog-modify-config .content-wrapper .project-setting{
+    width: 100%;
+    height: 360px;
+    float: right;
+    margin-right: 5px;
+}
+#dialog-modify-config .content-wrapper .project-setting .stack-layer
+{
+    width: 100%;
+    height: 100%;
+}
+#dialog-modify-config .content-wrapper .project-setting textarea
+{
+    line-height: 14px;
+    height: 56px;
+}
+
+/*************************
+
+石勇 导入标注的弹窗
+
+****************************/
+#dialog-project-import .content-wrapper .import-text{
+    width: 100%;
+    color: #aeaeae;
+    padding: 10px 10% 0px;
+}
+#dialog-project-import .content-wrapper .import-input{
+    padding: 10px 10% 0px;
+}
+#dialog-project-import .import-load{
+    border: 1px solid #a5a5a5;
+    background-color: #a5a5a5;
+    pointer-events: none;
+}
+#dialog-cloud .import-progress,
+#dialog-upload .import-progress,
+#dialog-tools-mnist .import-progress,
+#dialog-project-import .import-progress{
+    width: 0px;
+    height: 3px;
+    background-color: #2590ec;
+}
+
+/*************************
+
+石勇 导入mnist数据集的弹窗
+
+****************************/
+#dialog-cloud .mnist-upload,
+#dialog-upload .mnist-upload,
+#dialog-tools-mnist .mnist-upload{
+    border: 1px solid #DDD;
+    background-color: #F5F5F5;
+    color:#ACA899;
+    pointer-events: none;
+}
+/*************************
+
+石勇 上传数据源的弹窗
+
+****************************/
+#dialog-cloud .import-progress .upload-text,
+#dialog-upload .import-progress .upload-text{
+    color: #b3b3b3;
+    position: absolute;
+    bottom: 13px;
+    right: 10px;
+    display: none;
+    font-size: 11px;
+}
+/*************************
+
+石勇 导入完成的弹窗
+
+****************************/
+#dialog-project-imported .tips{
+    color: #DDD;
+    margin-left: 33px;
+    margin-top: 15px;
+}
+/*************************
+
+石勇 注册的弹窗
+
+****************************/
+#dialog-account-signUp .user-email{
+    padding-right: 85px;
+}
+#dialog-account-signUp .send-email{
+    width: 80px;
+    height: 30px;
+    display: inline-block;
+    position: absolute;
+    top: 47px;
+    right: 10px;
+    box-sizing: border-box;
+    text-align: center;
+    line-height: 30px;
+    border-left: 1px solid #b3b3b3;
+    cursor: pointer;
+}
+#dialog-account-signUp .send-email:hover .send-email-title{
+    color: #ffffff;
+}
+#dialog-account-signUp .back-login{
+    color: #b3b3b3;
+    position: absolute;
+    bottom: 10px;
+    left: 7px;
+    cursor: pointer;
+}
+#dialog-account-signUp .back-login:hover{
+    color: #ffffff;
+}
+#dialog-account-signUp .back-login span{
+    position: relative;
+    top: -1px;
+    left: -5px;
+}
+/*************************
+
+石勇 登录的弹窗修改
+
+****************************/
+#dialog-account-login .go-signUp{
+    color: #b3b3b3;
+    position: absolute;
+    bottom: 10px;
+    right: 6px;
+    cursor: pointer;
+}
+#dialog-account-login .go-signUp:hover{
+    color: #ffffff;
+}
+#dialog-account-login .go-signUp span{
+    position: relative;
+    top: -1px;
+    left: 3px;
+}

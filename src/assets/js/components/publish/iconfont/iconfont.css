@@ -1,0 +1,28 @@
+
+@font-face {font-family: "fp";
+  src: url('iconfont.eot?t=1519370404841'); /* IE9*/
+  src: url('iconfont.eot?t=1519370404841#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('iconfont.ttf?t=1519370404841') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('iconfont.svg?t=1519370404841#fp') format('svg'); /* iOS 4.1- */
+}
+
+.fp {
+  font-family:"fp" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.fp-icheck-default:before { content: "\e765"; }
+
+.fp-icheck-checked:before { content: "\e77f"; }
+
+.fp-close:before { content: "\e6b6"; }
+
+.fp-edit:before { content: "\e60b"; }
+
+.fp-min:before { content: "\e65d"; }
+
+.fp-meta-loading:before { content: "\e64e"; }
+

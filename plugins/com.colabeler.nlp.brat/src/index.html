@@ -1,0 +1,37 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="assets/js/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/js/jquery-toast/jquery-toast.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/index.css">
+</head>
+<body>
+    <div id="preview">
+        <svg id="svg" xmlns="http://www.w3.org/2000/svg" version="1.1">
+            <defs>
+                <marker xmlns="http://www.w3.org/2000/svg" id="drag_arrow" refX="5" refY="2.5" markerWidth="5" markerHeight="5" orient="auto" markerUnits="strokeWidth" class="drag_fill"><polyline points="0,0 5,2.5 0,5 0.2,2.5"></polyline></marker>
+            </defs>
+            <g class="background"></g>
+            <g class="highlights"></g>
+            <g class="text"></g>
+            <g class="annotation"></g>
+            <g class="line-num"></g>
+            <path xmlns="http://www.w3.org/2000/svg" marker-end="url(#drag_arrow)" class="drag_stroke" fill="none"></path>
+        </svg>
+        <div id="commentpopup">
+            <div>
+                <span class="comment_type_id_wrapper"><span class="comment_type"></span> <span class="comment_id"></span></span>
+                <div class="attribute"></div>
+            </div>
+            <div class="comment_text"></div>
+        </div>
+    </div>
+    <div class="measure-text"></div>
+    <script src='assets/js/jquery/jquery-3.2.1.min.js'></script>
+    <script src="assets/js/bootstrap/bootstrap.js"></script>
+    <script src="assets/js/jquery-toast/jquery-toast.js"></script>
+    <script src="assets/js/dialog/dialog.js"></script>
+    <script src='assets/js/color-hash/color-hash.js'></script>
+    <script src="assets/js/util.js"></script>
+    <script src='assets/js/index.js'></script>
+</body>
+</html>

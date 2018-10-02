@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" class="{{platform}}">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../../../assets/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../assets/plugins/jquery-toast/jquery-toast.css">
+    <link rel="stylesheet" type="text/css" href="../../../assets/js/components/stack/stack.css">
+    <link rel="stylesheet" type="text/css" href='../../../assets/js/components/icheck/icheck.css'>
+    <link rel="stylesheet" type="text/css" href="../../../assets/js/components/publish/publish.css">
+    <script>window.$ = window.jQuery = require('../../../assets/plugins/jquery/jquery-3.2.1.min.js');</script>
+    <script>window.i18n = new(require('../../../../locales/i18n.js'));</script>
+</head>
+
+<body class="dialog" id="dialog-publish-data" data-db_name="{{db_name}}">
+    <div class="dialog-header">
+        <h5 class="app-name">{{locales.export_to_mongodb}}</h5>
+        <div class="nav-window" id="nav-window">
+            <div id="btn-mini" data-id="minimize"  class="btn-transition btn-mini btn-minimize op-item"><i class="font-18 fp fp-min"></i></div>
+            <div id="btn-exit" class="btn-exit btn-transition op-item"><i class="fp fp-close"></i></div>
+        </div>
+    </div>
+
+    <div class="dialog-content">
+        <div class="step-list">
+
+            <!--第一步-->
+            <section class="step-config-connnect active">
+                <div class="step-title">{{locales.db_config}}</div>
+
+                <div class="setting select-old-config hide">
+                    <a class="setting-name">已保存的配置</a>
+                    <div class="dropdown dropMenu">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="old-config"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="text">选择已保存配置</span>
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="old-config">
+                            <li data-value="" data-alias="选择已保存配置" class="blank"><a class="dropdown-item" href="#">选择已保存配置</a></li>
+
+                        </ul>
+                    </div>
+                    <a class="btn del-config btn-primary"> 删除配置</a>
+                </div>
+
+                <div class="setting select-db-type hide">
+                    <a class="setting-name">选择数据库类型</a>
+                    <div class="dropdown dropMenu">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="db-type"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            <span class="text">MySQL</span>
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="db-type">
+                            <li data-target="mongodb"  data-value="mongodb" data-alias="MongoDB" class="stack-tab active selected"><a>MongoDB</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!--针对不同数据库显示不同输入框-->
+                <div id="connect-stack" class="connect-stack" data-toggle="stack">
+                    <div class="setting inputs-connect-info">
+                        <div id="mongodb" class="stack-layer active">
+                            <div class="info">
+                                <a class="input-name">{{locales.db_host}}</a><input type="text" name="host" class="form-control" placeholder="{{locales.db_host_placeholder}}" aria-label="host" aria-describedby="basic-addon1">
+                            </div>
+                            <div class="info">
+                                <a class="input-name">{{locales.db_port}}</a><input type="text" name="port" class="form-control" placeholder="{{locales.db_port_placeholder}}" aria-label="port" aria-describedby="basic-addon1" value="27017">
+                            </div>
+                            <div class="info">
+                                <a class="input-name">{{locales.db_user}}</a><input type="text" name="username" class="form-control" placeholder="{{locales.db_user_placeholder}}" aria-label="username" aria-describedby="basic-addon1">
+                            </div>
+                            <div class="info">
+                                <a class="input-name">{{locales.db_password}}</a><input type="password" name="password" class="form-control" placeholder="{{locales.db_password_placeholder}}" aria-label="password" aria-describedby="basic-addon1">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="db-name-list setting">
+                    <div class="input-name">{{locales.db_name}}</div>
+                    <div class="input-group">
+                        <input name="database" type="text" class="form-control" aria-label="Text input with dropdown button">
+                        <div class="input-group-append">
+                            <button class="btn btn-default btn-outline-secondary dropdown-toggle" type="button"
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="caret"></span>
+                            </button>
+                            <div class="dropdown-menu">
+                                <!--<li data-value="qdm167355343_db" class="selected"><a class="dropdown-item" href="#">qdm167355343_db</a></li>-->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn btn-default test-db-connect"><i class="fp fp-meta-loading"></i><span>{{locales.db_connect}}</span></div>
+                </div>
+                <div class="operation-log">
+                    <textarea rows="8"></textarea>
+                </div>
+            </section>
+
+            <!--第二步-->
+            <section class="step-field-mapping">
+                <div class="step-title">{{locales.db_table_title}}</div>
+                <div class="setting select-table">
+                    <a class="setting-name">{{locales.db_table}}</a>
+                    <div class="dropdown dropMenu">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="table-list"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="text">{{locales.db_choose}}</span>
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="old-config"></ul>
+                    </div>
+
+                    <input type="text" class="form-control form-inline" name="table-name" placeholder="{{locales.db_table_placeholder}}">
+                </div>
+            </section>
+
+            <!--第三步-->
+            <section class="step-ready-publish">
+                <input id="ignore-error" data-toggle="icheck" type="checkbox" checked name="ignore-error" value="" >
+                <label for="ignore-error">{{locales.db_ignore_error}}</label>
+                <div class="publish-log">
+                    <div contenteditable="true" class="log-wrapper">
+                        <p class="success-info"></p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+    <div class="footer dialog-footer">
+        <div class="pull-right config-taskbar">
+            <a class="btn btn-default btn-prev hide">{{locales.prev_step}}</a>
+            <a class="btn btn-primary btn-next">{{locales.next_step}}</a>
+            <a class="btn btn-primary btn-export hide">{{locales.db_export}}</a>
+            <a class="btn btn-default" id="btn-cancel">{{locales.main_confirm_cancel}}</a>
+        </div>
+    </div>
+
+    <!--bootstrap js-->
+    <script src="../../../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../../assets/plugins/lodash/lodash.min.js"></script>
+    <script src="../../../assets/plugins/jquery-toast/jquery-toast.js"></script>
+    <script src="../../../assets/plugins/pouch/pouchdb.js"></script>
+
+    <script src='../../../assets/js/components/core.js'></script>
+    <script src='../../../assets/js/components/lodash-ext/lodash-ext.js'></script>
+    <script src='../../../assets/js/components/stack/stack.js'></script>
+    <script src='../../../assets/js/components/icheck/icheck.js'></script>
+
+    <script src='../../../assets/js/components/publish/DBPublisher.js'></script>
+    <script src='../../../assets/js/components/publish/publish.js'></script>
+</body>
+</html>
+
+

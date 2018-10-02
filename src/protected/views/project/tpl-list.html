@@ -1,0 +1,27 @@
+<section class="section-project-list">
+    <div class="section-header">
+        {{locales.project_list_all}}
+    </div>
+    <ul class="project-list">
+        <li class="item-tutorial">
+            <div class="video">
+                <div><i class="fs fs-play"></i></div>
+                <div>{{locales.app_name}}</div>
+            </div>
+            <div class="text">{{locales.project_list_tutorial}}</div>
+        </li>
+        <li class="item-add">
+            <div><i class="fs fs-zoom-in"></i></div>
+            <div>{{locales.project_list_add}}</div>
+        </li>
+        {{#project_list}}
+        <li data-project="{{project_id}}">
+            <img src="{{plugin_icon}}" />
+            <div class="title">{{name}}</div>
+            <div class="info">{{locales.project_list_type}}{{plugin_name}}</div>
+            <div class="info">{{locales.project_list_time}}{{time_created}}</div>
+            <i class="fs fs-close ico-remove"></i>
+        </li>
+        {{/project_list}}
+    </ul>
+</section>

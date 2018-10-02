@@ -1,0 +1,13 @@
+{
+  "plugin_name":"文本分类",
+  "group_name":"自然语言处理",
+
+  "inputs_source":"文本文件夹",
+  "inputs_classify":"分类值(逗号分隔)",
+  "inputs_classify_default":"积极,消极",
+  "inputs_count":"一段文字有几个分类",
+
+  "page_notEmpty":"分类值不能为空",
+  "page_invalid":"不是设定的分类"
+
+}

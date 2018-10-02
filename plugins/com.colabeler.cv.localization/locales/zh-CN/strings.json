@@ -1,0 +1,19 @@
+{
+    "plugin_name":"位置标注",
+    "group_name":"机器视觉",
+    "toolbar_move":"移动",
+    "toolbar_remove":"删除选框",
+    "toolbar_curve":"曲线框",
+    "toolbar_polygon":"多边形框",
+    "toolbar_rect":"矩形框",
+
+    "inputs_source":"图片文件夹",
+    "inputs_classify_value":"分类值(逗号分隔)",
+    "inputs_classify_value_default":"花,鸟,鱼,虫",
+
+    "page_select2_input":"自定义输入",
+    "page_select2_predefined":"预定义分类",
+
+    "page_result_title":"标注信息",
+    "page_notEmpty":"标注信息不能为空！"
+}
