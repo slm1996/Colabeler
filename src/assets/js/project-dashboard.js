@@ -125,6 +125,7 @@ if(shenjian.is("page-main-index")){
             var fileListIndex = 0;
             var go1step = function(direction = "next"){
                 var prevList,nextList;
+                var collwidth=layer.find(".collection").width()
                 if(direction == "next"){
                     nextList = nextCollection.children("li");
                     if(nextList.length > 1){
@@ -135,7 +136,7 @@ if(shenjian.is("page-main-index")){
                                 nextCollection.append(`<li data-id="${fileList[nextIndex].path}" data-index="${nextIndex}"><img src="file:///${fileList[nextIndex].path.replace(/\\/g,"/")}" /></li>`)
                             }
                             prevList = prevCollection.children("li");
-                            if(prevList.length > 15){
+                            if(prevList.length > collwidth/60){
                                 prevList.first().remove();
                             }
                         }
@@ -150,14 +151,57 @@ if(shenjian.is("page-main-index")){
                                 prevCollection.prepend(`<li data-id="${fileList[prevIndex].path}" data-index="${prevIndex}"><img src="file:///${fileList[prevIndex].path.replace(/\\/g,"/")}" /></li>`)
                             }
                             nextList = nextCollection.children("li");
-                            if(nextList.length > 15){
+                            if(nextList.length > collwidth/60){
                                 nextList.last().remove();
                             }
                         }
                     }
                 }
             };
-
+            var gonstep = function(direction = 0){
+                var prevList,nextList;
+                var collwidth=layer.find(".collection").width()
+                if(direction >0){
+                    num=0
+                    while (num<direction){
+                        nextList = nextCollection.children("li");
+                        if(nextList.length > 1){
+                            prevCollection.append(nextList.first().detach());
+                            var nextIndex = nextList.last().data("index") + 1;
+                            if(nextIndex < fileList.length){
+                                if(plugin_source.type == "folder.image"){
+                                    nextCollection.append(`<li data-id="${fileList[nextIndex].path}" data-index="${nextIndex}"><img src="file:///${fileList[nextIndex].path.replace(/\\/g,"/")}" /></li>`)
+                                }
+                                prevList = prevCollection.children("li");
+                                if(prevList.length > collwidth/60){
+                                    prevList.first().remove();
+                                }
+                            }
+                        }
+                        num+=1;
+                    }
+                }else if(direction <0){
+                    num=0
+                    while (num<-direction){
+                        prevList = prevCollection.children("li");
+                        if(prevList.length >= 0){
+                            nextCollection.prepend(prevList.last().detach());
+                            var prevIndex = prevList.first().data("index") - 1;
+                            if(prevIndex > 0){
+                                if(plugin_source.type == "folder.image"){
+                                    prevCollection.prepend(`<li data-id="${fileList[prevIndex].path}" data-index="${prevIndex}"><img src="file:///${fileList[prevIndex].path.replace(/\\/g,"/")}" /></li>`)
+                                }
+                                nextList = nextCollection.children("li");
+                                if(nextList.length > collwidth/60){
+                                    nextList.last().remove();
+                                }
+                            }
+                        }
+                        num+=1;
+                    }
+                }
+            };
+            
             layer.find("iframe").on("load",function(){
                 stageReady();
                 $(layer.find("iframe")[0].contentWindow.document).on('keyup',function (ev) {
@@ -270,7 +314,15 @@ if(shenjian.is("page-main-index")){
                     })
                 }
             });
-
+            layer.find(".collection").on("click","li",function(){
+                var ind=$(this).attr("data-index");
+                // console.log(ind);
+                gonstep(ind-fileListIndex);
+                fileListIndex=ind;
+                db.get(fileList[fileListIndex].path,{attachments:true,binary:true}).then(function (doc) {
+                    actorWillEnter(doc);
+                })
+            });
 
             /**
              * 数据窗口和前后按钮
