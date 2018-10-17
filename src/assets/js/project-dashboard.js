@@ -201,11 +201,6 @@ if(shenjian.is("page-main-index")){
                     }
                 }
             };
-<<<<<<< HEAD
-
-=======
-            
->>>>>>> 884a691b5bf04a1e060501c8d961127678b204a7
             layer.find("iframe").on("load",function(){
                 stageReady();
                 $(layer.find("iframe")[0].contentWindow.document).on('keyup',function (ev) {

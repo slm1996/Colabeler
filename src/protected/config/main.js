@@ -5,5 +5,5 @@ const path = require('path')
 module.exports = {
     'basePath':path.join(__dirname,".."),
     'defaultController' : 'splash',
-    'debug':true,
+    'debug':false,
 }
