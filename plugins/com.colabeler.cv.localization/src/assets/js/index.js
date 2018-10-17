@@ -77,16 +77,45 @@ var isDrawing = function(){
     return overlay.hasClass("drawable");
 };
 
-var createValueItem = function(name){
+var createValueItem = function(name,xmin,xmax,ymin,ymax,real){
+    console.log('createValueItem');
+    // console.log(name);
+     console.log(xmin);
+     console.log(xmax);
+    // console.log(img);
+     console.log(ymin);
+     console.log(ymax);
+    console.log(img[0].width);
+
+    var maxedge=Math.max(xmax-xmin,ymax-ymin);
+    var edgescale=88.0/maxedge;
+    
+    var dx=((xmax-xmin)*edgescale-88)/2.0;
+    var dy=((ymax-ymin)*edgescale-88)/2.0;
+
+    var i=new Image();
+    i.src=img.attr("src");
+    i.onload=function(){
+        console.log(i.width);
+        picscale=1;
+        if(real){
+            picscale=img[0].width/i.width;
+        }
+        item.find(".select-subimg").attr("style",'width: 90px;background-color:  #333;left: 100px;background:url('+encodeURI(img.attr("src"))+
+            ');background-size:'+picscale*i.width/88.0*edgescale*100+'%;background-repeat: no-repeat;background-position: '+-
+            (xmin*edgescale+dx)+'px '+-(ymin*edgescale+dy)+'px;')
+    }
+    
+    
     //右侧创建一个新的select
     var item = valueItem.clone().appendTo(resultList);
     var select2 =  item.children("select").select2({
         minimumResultsForSearch: Infinity,
         templateResult: function(state){
-            if (state.text === plugin.i18n.getString("page_select2_input")) {
+            if (state.text === plugin.i18n.getString("page_select2_input")) {  
                 var $state = $(
                     '<img class="option-img" src="./assets/image/pencil.svg" /><span class="option-input">' + state.text + "</span>"
-                );
+                    );
                 return $state;
             }
             return state.text;
@@ -120,11 +149,12 @@ var createValueItem = function(name){
 }
 
 document.addEventListener("stage-ready",function(ev){
+    console.log('stage-ready');
     valueItem = $(`<li><select>
 <option>${plugin.i18n.getString("page_select2_input")}</option>
 <optgroup label="${plugin.i18n.getString("page_select2_predefined")}">
  </optgroup>
-</select>
+</select><span><div class=' select2-container select-subimg' style="width: 90px;height: 90px;background-color:  #333;left: 100px;"></div></span>
 <input class='select-input' placeholder='${plugin.i18n.getString("page_select2_input")}' value='' />
 </li>`);
     var data = ev.detail;
@@ -291,6 +321,10 @@ document.addEventListener("stage-ready",function(ev){
         var rectPageY = 0;
         var rectLeft = 0;
         var rectTop = 0;
+        var xmin=0;
+        var xmax=0;
+        var ymin=0;
+        var ymax=0;
         overlay.on("mousedown",function(ev){
             if(isDrawing() && drawingType == "rect" && drawingRect === false){
                 overlayOffset = overlay.offset();
@@ -330,6 +364,10 @@ document.addEventListener("stage-ready",function(ev){
                 }
                 currShape.scss("width",width/currScale).scss("height",height/currScale).scss("left",left/currScale).scss("top",top/currScale);
                 ev.preventDefault();
+                xmin=left;
+                ymin=top;
+                xmax=xmin+width;
+                ymax=ymin+height;
             }
         }).on("mouseup",function(){
             if(drawingRect){
@@ -339,7 +377,7 @@ document.addEventListener("stage-ready",function(ev){
                 }else{
                     stopDrawing();
                     plugin.toolbar.deselect("rect");
-                    createValueItem();
+                    createValueItem(null,xmin,xmax,ymin,ymax,1);
                 }
                 drawingRect = false;
                 currShape = null;
@@ -459,7 +497,7 @@ document.addEventListener("stage-ready",function(ev){
             currShape = null;
             stopDrawing()
             plugin.toolbar.deselect("polygon");
-            createValueItem();
+            createValueItem(null,polygonMinX,polygonMaxX,polygonMinY,polygonMaxY,1);
         }
         overlay.on("click", function (ev) {
             if (isDrawing() && drawingType == "polygon") {
@@ -581,7 +619,7 @@ document.addEventListener("stage-ready",function(ev){
             currShape = null;
             stopDrawing()
             plugin.toolbar.deselect("curve");
-            createValueItem();
+            createValueItem(null,xmin,xmax,ymin,ymax,1);
         }
         overlay.on("mousedown",function(ev){
             if (isDrawing() && drawingType == "curve" ) {
@@ -1004,7 +1042,9 @@ document.addEventListener("actor-will-enter",function(ev){
                 }
                 curve.children("path").data("d",pathd+"Z");
             }
-            createValueItem(name);
+
+            createValueItem(name,xmin,xmax,ymin,ymax);
+            
         })
     }else{
         startDrawing()

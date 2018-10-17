@@ -282,20 +282,22 @@ body{
 }
 #result-list > li{
     width: 100%;
-    height: 35px;
+    height: 95px;
     position: relative;
 }
 #result-list > li select{
-    width: 190px;
+    width: 90px;
 }
 #result-list > li .select2-container
 {
-    height: 30px;
+    height: 90px;
     border: 1px dashed #ccc;
     margin: 5px;
     outline: none;
     font-size: 12px;
     text-align: left;
+    position: absolute;
+    left: 0px;
 }
 #result-list > li .select2-selection{
     border: 0;
@@ -310,11 +312,11 @@ body{
 .select-input{
     border: 1px dashed #ccc;
     padding: 0 0 0 10px;
-    height: 32px;
+    height: 92px;
     display: block;
     outline: none;
     position: absolute;
-    width: 190px;
+    width: 90px;
     top: 5px;
     left: 5px;
 }
