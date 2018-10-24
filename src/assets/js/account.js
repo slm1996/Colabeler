@@ -147,6 +147,10 @@ if(shenjian.is("dialog-account-login")){
                 let paramsCreate = getSignData();// 创建数据源的传参
                 paramsCreate["name"] = projectName;
                 paramsCreate["fields"] = fields;
+                // 并发线程的数量
+                let request_num = 100;
+                let file_num = 10;
+                let upload_file_count = 0;
                 //4.创建数据源
                 $.post("https://www.shenjian.io/rest/v3/source/create",paramsCreate,function (data) {
                     if(data.code !== 0){
@@ -158,96 +162,127 @@ if(shenjian.is("dialog-account-login")){
                             include_docs: true
                         }).then(function (result) {
                             rows = result.rows;
+                            for (let i = 0; i < request_num; i++){
+                                upload_files[i] = [];
+                                doc_list[i] = [];
+                            }
                             upload_next();
                         }).catch(function (e) {
                             console.log(e);
                         });
                         function upload_next() {
                             let doc = rows[uploaded_index].doc;
-                            if(!doc.labeled){
+                            if(!doc.labeled && uploaded_index < rows_count){
+                                uploaded_index++;
                                 progress();
                                 return;
                             }
 
-                            file_size = file_size + fs.statSync(doc.path).size;
-                            if(file_size <= 5242880 && uploaded_count < 600){
-                                upload_files.push(doc.path);
-                                doc_list.push(doc);
-                                uploaded_index++;
-                                uploaded_count++;
-                                if(uploaded_index < rows_count){
-                                    upload_next();
-                                    return;
+                            for (let i = 0; i < request_num; i++){
+                                if((i-1 < 0 || doc_list[i-1].length == file_num) && doc_list[i].length < file_num && doc.path){
+                                    upload_files[i].push(doc.path);
+                                    doc_list[i].push(doc);
+                                    uploaded_index++;
+                                    uploaded_count++;
+                                    if(uploaded_index < rows_count){
+                                        upload_next();
+                                        return;
+                                    }
                                 }
                             }
-                            let paramsUploadFile = getSignData();// 上传文件接口的传参
-                            upload_files.map(function (item, index) {
-                                paramsUploadFile["upfile_"+index] = {file: item, content_type : 'application/octet-stream'};
-                            });
-                            var requestOptions = {
+                            let paramsUploadFile = [];// 上传文件接口的传参
+                            for (let i = 0; i < request_num; i++){
+                                paramsUploadFile[i] = getSignData();
+                                upload_files[i].map(function (item, index) {
+                                    paramsUploadFile[i]["upfile_"+index] = {file: item, content_type : 'application/octet-stream'};
+                                });
+                            }
+
+                            for (let index = 0; index < request_num; index++){
+                                if(!paramsUploadFile[index]["upfile_0"]){
+                                    continue;
+                                }
+                                upload_files(paramsUploadFile[index],index)
+                            }
+                        }
+                        function upload_files(params,index) {
+                            let requestOptions = {
                                 multipart: true,
                                 response_timeout: 180000,
                                 read_timeout: 180000,
                             };
-                            needle.post('https://www.shenjian.io/rest/v3/source/'+appId+'/file/uploadList', paramsUploadFile, requestOptions, function(err, res) {
+                            needle.post('https://www.shenjian.io/rest/v3/source/'+appId+'/file/uploadList', params, requestOptions, function(err, res) {
                                 if(res !== undefined && res.body !== undefined && res.body.code == 0){
+                                    upload_file_count += upload_files[index].length;
+                                    $(".import-progress .upload-text").css("display","block");
+                                    $(".import-progress .upload-index").text(upload_file_count);
+                                    // 进度条
+                                    let percent = uploaded_index/rows_count;
+                                    $(".import-progress").css("width",(percent*100)+"%");
                                     file_size = 0;
                                     uploaded_count = 0;
-                                    upload_files = [];
+                                    upload_files[index] = [];
                                     let pathCloud = res.body.data.urls;
-                                    for (let i in doc_list){
-                                        delete doc_list[i]["_id"];
-                                        delete doc_list[i]["_rev"];
-                                        delete doc_list[i]["src"];
-                                        doc_list[i]["path_host"] = pathCloud["upfile_"+i];
-                                        doc_list[i]["labeled"] = doc_list[i]["labeled"]==1 ? "true":"false";
+                                    for (let i in doc_list[index]){
+                                        delete doc_list[index][i]["_id"];
+                                        delete doc_list[index][i]["_rev"];
+                                        delete doc_list[index][i]["src"];
+                                        doc_list[index][i]["path_host"] = pathCloud["upfile_"+i];
+                                        doc_list[index][i]["labeled"] = doc_list[index][i]["labeled"]==1 ? "true":"false";
                                     }
                                     if($(".expand")[0] && $(".expand")[0].checked){
                                         let temp = [];
-                                        for (let i in doc_list){
-                                            temp.push(flattenTree(doc_list[i]));
+                                        for (let i in doc_list[index]){
+                                            temp.push(flattenTree(doc_list[index][i]));
                                         }
-                                        doc_list = temp;
+                                        doc_list[index] = temp;
                                     }
-                                    insert_next(JSON.stringify(doc_list));
+                                    if(doc_list[index].length == 0){
+                                        return;
+                                    }
+                                    insert_next(JSON.stringify(doc_list[index]),index);
                                 }else{
                                     if (err) {
                                         console.log("err occur: " + err.message);
                                     }
                                     //重试
                                     setTimeout(function(){
-                                        upload_next();
+                                        upload_files(params,index);
                                     },500)
                                 }
                             })
                         }
-                        function insert_next(doc){
+                        // 为防止数据混乱，添加成功时的标记
+                        let insert_check = 0;
+                        function insert_next(doc,listIndex){
                             let paramsInsert = getSignData();// 上传数据接口的传参
                             paramsInsert["data"] = doc;
-                            doc_list = [];
                             $.post("https://www.shenjian.io/rest/v3/source/"+appId+"/insertList",paramsInsert,function (data) {
                                 if(data.code == 0){
+                                    doc_list[listIndex] = [];
+                                    insert_check = 1;
                                     progress();
                                 }else{
                                     //重试
                                     setTimeout(function(){
-                                        insert_next(doc);
+                                        insert_next(doc,listIndex);
                                     },500)
                                 }
                             }).fail(function () {
                                 //接口调用失败时进行重试
                                 setTimeout(function(){
-                                    insert_next(doc);
+                                    insert_next(doc,listIndex);
                                 },500)
                             })
                         }
                         function progress() {
-                            $(".import-progress .upload-text").css("display","block");
-                            $(".import-progress .upload-index").text(uploaded_index);
-                            // 进度条
-                            let percent = uploaded_index/rows_count;
-                            $(".import-progress").css("width",(percent*100)+"%");
-                            if(uploaded_index == rows_count){
+                            let check_null = 0;
+                            for (let i = 0;i < doc_list.length;i++){
+                                if(doc_list[i].length > 0){
+                                    check_null = 1;
+                                }
+                            }
+                            if(check_null == 0 && uploaded_index >= rows_count){
                                 if(shenjian.is("dialog-cloud")){
                                     let db = new PouchDB("project-list");
                                     db.get(projectId).then(function(doc) {
@@ -272,7 +307,11 @@ if(shenjian.is("dialog-account-login")){
                                     });
                                     shenjian.close();
                                 },500)
-                            }else {
+                            }else if(insert_check == 1 && check_null == 1){
+                                return;
+                            }
+                            else {
+                                insert_check = 0;
                                 upload_next();
                             }
                         }

@@ -507,6 +507,129 @@ MacOS
     margin-top: 10px;
 }
 
+/*************************
+ *
+ * 石勇 生成验证码保存配置
+ *
+ *************************/
+#dialog-tools-generate-captcha .captcha-configurations{
+    width: 100%;
+    background-color: #0f0f0f;
+    border: 1px solid gray;
+    height: 30px;
+    line-height: 30px;
+}
+#dialog-tools-generate-captcha .captcha-configurations .selected-text{
+    margin-left: 10px;
+}
+#dialog-tools-generate-captcha .captcha-configurations .down-icon{
+    position: absolute;
+    right: 20px;
+}
+#dialog-tools-generate-captcha .half-width{
+    width: 49%;
+    display: inline-block;
+}
+#dialog-tools-generate-captcha .configurations-list{
+    width: 100%;
+    max-height: 200px;
+    border: 1px solid gray;
+    background-color: #0f0f0f;
+    position: relative;
+    display: none;
+    z-index: 66;
+    box-shadow: 0px 2px 3px grey;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+#dialog-tools-generate-captcha .configurations-list .configuration-title{
+    height: 30px;
+    line-height: 30px;
+    padding-left: 10px;
+    cursor: pointer;
+}
+#dialog-tools-generate-captcha .configurations-list .configuration-title:hover{
+    color: #ffffff;
+    background-color: #117cd8;
+}
+#dialog-tools-generate-captcha .configuration-title .remove-configuration{
+    position: relative;
+    left: 620px;
+    top: -30px;
+    display: none;
+}
+#dialog-tools-generate-captcha .configuration-title .remove-configuration:hover{
+    text-decoration: underline;
+    color: #FFFFFF;
+}
+#dialog-tools-generate-captcha .configuration-title:nth-child(n+2):hover .remove-configuration{
+    display: block;
+}
+#dialog-tools-generate-captcha .operate-title{
+    height: 30px;
+    box-sizing: border-box;
+    color: #b3b3b3;
+    line-height: 30px;
+    overflow: hidden;
+    display: inline-block;
+}
+#dialog-tools-generate-captcha .operate-title .new-name{
+    width: 310px;
+    margin-left: 5px;
+}
+#dialog-tools-generate-captcha .operate-title .new-name.disabled{
+    background-color: gray;
+    pointer-events: none;
+}
+#dialog-tools-generate-captcha .local-type-title{
+    width: 105px;
+    height: 30px;
+    border: 1px solid gray;
+    box-sizing: border-box;
+    color: #b3b3b3;
+    line-height: 30px;
+    text-align: center;
+    cursor: pointer;
+    overflow: hidden;
+    display: inline-block;
+    margin-left: 15px;
+}
+#dialog-tools-generate-captcha .local-type-title:first-child{
+    margin-left: 0px;
+}
+#dialog-tools-generate-captcha .local-type-title.disabled{
+    background-color: gray;
+    pointer-events: none;
+}
+#dialog-tools-generate-captcha .local-type-title.selected{
+    border: 1px solid #2590ec;
+}
+#dialog-tools-generate-captcha .local-type-title .selected-show{
+    display: none;
+}
+#dialog-tools-generate-captcha .local-type-title .selected-bg{
+    position: relative;
+    left: 88px;
+    bottom: 10px;
+    width: 21px;
+    height: 13px;
+    background-color: #2590ec;
+    transform: rotate(-40deg);
+}
+#dialog-tools-generate-captcha .local-type-title .selected-icon{
+    color: ghostwhite;
+    position: relative;
+    bottom: 35px;
+    left: 47px;
+    font-size: 10px;
+}
+#dialog-tools-generate-captcha .local-type-title.selected .selected-show{
+    display: block;
+}
+
+
+
+
 #dialog-cloud .confirm-text,
 #dialog-upload .confirm-text{
     color: gainsboro;

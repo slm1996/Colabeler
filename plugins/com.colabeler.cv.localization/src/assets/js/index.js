@@ -112,10 +112,10 @@ var createValueItem = function(name,xmin,xmax,ymin,ymax,real){
     var select2 =  item.children("select").select2({
         minimumResultsForSearch: Infinity,
         templateResult: function(state){
-            if (state.text === plugin.i18n.getString("page_select2_input")) {  
+            if (state.text === plugin.i18n.getString("page_select2_input")) {
                 var $state = $(
                     '<img class="option-img" src="./assets/image/pencil.svg" /><span class="option-input">' + state.text + "</span>"
-                    );
+                );
                 return $state;
             }
             return state.text;
@@ -149,7 +149,6 @@ var createValueItem = function(name,xmin,xmax,ymin,ymax,real){
 }
 
 document.addEventListener("stage-ready",function(ev){
-    console.log('stage-ready');
     valueItem = $(`<li><select>
 <option>${plugin.i18n.getString("page_select2_input")}</option>
 <optgroup label="${plugin.i18n.getString("page_select2_predefined")}">
@@ -1042,9 +1041,7 @@ document.addEventListener("actor-will-enter",function(ev){
                 }
                 curve.children("path").data("d",pathd+"Z");
             }
-
             createValueItem(name,xmin,xmax,ymin,ymax);
-            
         })
     }else{
         startDrawing()

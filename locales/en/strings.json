@@ -27,7 +27,7 @@
     "menu_recommend_houyi": "Download ScrapeStorm",
     "menu_tool": "Tools",
     "menu_tool_generate": "Generate Data",
-    "menu_tool_generate_captcha": "Generate Captcha",
+    "menu_tool_generate_captcha": "Generate Captcha...",
     "menu_mac_hide": "Hide",
     "menu_mac_hideOthers": "Hide Others",
     "menu_mac_unHide": "UnHide",
@@ -92,6 +92,7 @@
     "project_new_projectName":"Project Name",
     "project_new_project":"Project",
     "project_new_create":"Create",
+    "project_new_generate":"Create",
     "project_new_notEmpty":"Project name can not be empty",
 
     "project_data_title":"Result Data",
@@ -179,6 +180,16 @@
     "project_captcha_label_font":"Font size of the captcha code",
     "project_captcha_label_obfuscation":"obfuscation in the captcha(true,false)",
     "project_captcha_generating":"captcha is generating",
+
+    "project_captcha_error_folder":"Please select the verification code storage folder first !",
+    "project_captcha_error_configuration_name":"Please enter a new configuration name",
+    "project_captcha_choose_configuration":"Choose configuration",
+    "project_captcha_default_configuration":"Default",
+    "project_captcha_not_save_configuration":"Don't save",
+    "project_captcha_cover_configuration":"Cover",
+    "project_captcha_save_new_configuration":"Save new",
+    "project_captcha_delete_configuration":"Delete",
+    "project_captcha_new_configuration":"New",
 
     "project_label_saved_successfully":"saved successfully",
     "project_content_unsaved":"There is still unsaved content. Are you sure to leave?",

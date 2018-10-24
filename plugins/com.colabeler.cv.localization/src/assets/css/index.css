@@ -31,6 +31,8 @@ body{
 #canvas > img {
     margin: 0 auto;
     height: 100%;
+    max-width: 100%;
+    object-fit: contain;
 }
 #position-number{
     width: 80px;

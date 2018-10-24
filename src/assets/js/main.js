@@ -134,7 +134,7 @@ $(function () {
         else if(role == "captcha"){
             shenjian.openUrl(shenjian.url("captcha","tools"),"New-Captcha-Generate-Project-Window",{
                 width: 700,
-                height: 650,
+                height: 630,
                 frame: false,
                 resizable: false
             })

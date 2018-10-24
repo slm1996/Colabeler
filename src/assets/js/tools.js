@@ -3,6 +3,105 @@
  */
 const process = require("process");
 if(shenjian.is("dialog-tools-generate-captcha")){
+    let param_db = new PouchDB("configuration-list");
+    // 点击配置名称框显示下拉框
+    $(".captcha-configurations").on("click",function () {
+        // 获取并显示所有的配置名称
+        param_db.allDocs({
+            include_docs: true
+        }).then(function (result) {
+            $(".configurations-list").empty();
+            let rows = result.rows;
+            rows.unshift({doc: {_id:0,_rev:0,name:i18n.__("project_captcha_default_configuration")}});
+            for (let item of rows){
+                let name_html = `<li class="configuration-title" data-id="${item.doc._id}" data-rev="${item.doc._rev}">
+                <span class="title">${item.doc.name}</span>
+                <span class="remove-configuration" data-id="${item.doc._id}">${i18n.__("project_captcha_delete_configuration")}</span>
+                </li>`;
+                $(".configurations-list").append(name_html);
+            }
+        }).catch(function (e) {
+            console.log(e);
+        });
+        $(".configurations-list").css("display","block");
+        event.stopPropagation();
+    })
+    // 点击下拉框的配置
+    $(".configurations-list").on("click",".configuration-title",function () {
+        let params_id = $(this).data("id");
+        let params_rev = $(this).data("rev");
+        $(".configurations-list").css("display","none");
+        $(".selected-text").text($(this).find(".title").text());
+        $(".selected-text").data("id",params_id);
+        $(".selected-text").data("rev",params_rev);
+        let all_params = {};
+        // 获取存在indexDB中的配置参数
+        param_db.get(params_id).then(function (doc) {
+            all_params = {
+                charsets: doc.charsets,
+                num_images: doc.num_images,
+                num_text: doc.num_text,
+                width: doc.width,
+                height: doc.height,
+                font: doc.font,
+                obfuscation: doc.obfuscation,
+            }
+            $(".local-type-title.cover").removeClass("disabled");
+            updateInputValue(all_params);
+        }).catch(function (err) { // 获取失败说明选择的是默认配置
+            all_params = {
+                charsets:"0-9",
+                num_images:"100",
+                num_text:"4",
+                width:"200",
+                height:"60",
+                font:"bold 40px Lucida Sans Unicode",
+                obfuscation:"false"
+            };
+            $(".local-type-title.cover").addClass("disabled");
+            if($(".local-type-title.cover").hasClass("selected")){
+                $(".local-type-title.cover").removeClass("selected");
+                $(".local-type-title.not-save").addClass("selected");
+            }
+            updateInputValue(all_params);
+            console.log(err);
+        });
+        event.stopPropagation();
+    })
+    // 修改input框中的value值的方法
+    function updateInputValue(obj){
+        $("input[name='charsets']").val(obj.charsets);
+        $("input[name='num_images']").val(obj.num_images);
+        $("input[name='num_text']").val(obj.num_text);
+        $("input[name='width']").val(obj.width);
+        $("input[name='height']").val(obj.height);
+        $("input[name='font']").val(obj.font);
+        $("input[name='obfuscation']").val(obj.obfuscation);
+    }
+    // 点击删除下拉框的配置
+    $(".configurations-list").on("click",".remove-configuration",function (e) {
+        let $this = $(this)
+        e.stopPropagation();
+        let params_id = $(this).data("id");
+        param_db.get(params_id).then(function (doc) {
+            param_db.remove(doc);
+            $this.parent().remove();
+        }).catch(function (err) {
+            console.log(err);
+        });
+    })
+    // 点击选择如何操作当前参数
+    $(".local-type-title").on("click",function () {
+        $(".local-type-title").removeClass("selected");
+        if($(this).data("type") == "new"){
+            $(".new-name").removeClass("disabled");
+            $(".new-name").val(i18n.__("project_captcha_new_configuration") + new Date().getTime());
+        }else{
+            $(".new-name").addClass("disabled");
+        }
+        $(this).addClass("selected");
+    })
+
     $("#btn-create").on("click",function () {
         let plugin_id = "com.colabeler.cv.transcript";
         let plugin_name = $('.plugin-name').val();
@@ -24,7 +123,7 @@ if(shenjian.is("dialog-tools-generate-captcha")){
             let input = $(this);
             if(input.attr("name") == "source" && input.val() == ""){
                 dataCompleted = false;
-                $.toast("请先选择验证码存储文件夹！")
+                $.toast(i18n.__("project_captcha_error_folder"));
                 return;
             }
             data.inputs[input.attr("name")] = input.val();
@@ -32,59 +131,108 @@ if(shenjian.is("dialog-tools-generate-captcha")){
         if(!dataCompleted){
             return;
         }
-        $('.progress-wrapper').show().on('progress-change',function (e,progress) {//进度条
-            $(this).find('span').text(progress);
-        });
-        let db = new PouchDB("project-list");
-        data._id = process.hrtime().join('_');
-        db.put(data, (err,res) => {
-            data.project_id = data._id;
-            let projectDB = new PouchDB("project-"+data.project_id);
-            projectDB.createIndex({
-                index: {
-                    fields: ['_id','labeled']
-                }
-            }).then(function (result) {
-                shenjian.post(shenjian.url("create","project"),data,function(){
-                    db.close().then(function () {
-                        let count = parseInt(data.inputs.num_images);
-                        //解析charsets
-                        let charsets = data.inputs.charsets.split(',');
-                        let charsets_parsed = [];
-                        for(let i=0;i<charsets.length;i++){
-                            if(charsets[i].length===3 && charsets[i].charAt(1) === '-'){
-                                const char1 = charsets[i].charAt(0);
-                                const char3 = charsets[i].charAt(2);
-                                if(/\d/.test(char1) && /\d/.test(char3) && char1<char3){
-                                    for(let j=char1;j<=char3;j++){
-                                        charsets_parsed.push(j)
-                                    }
-                                }else if(/[a-zA-Z]/.test(char1) && /[a-zA-Z]/.test(char3) && char1.charCodeAt(0)<=char3.charCodeAt(0)){
-                                    for(let k=char1.charCodeAt(0);k<=char3.charCodeAt(0);k++){
-                                        charsets_parsed.push(String.fromCharCode(k));
-                                    }
-                                }
-                            }else{
-                                charsets_parsed.push(charsets[i]);
-                            }
-                        }
-                        saveProject(projectDB,data.inputs,count,charsets_parsed);//存储验证码
-                        $(window).on('project-save-success',function () {
-                            shenjian.send("ProjectCreated",{
-                                project_id:data.project_id,
-                                name:data.name,
-                                plugin_icon:plugin_icon,
-                                plugin_name:plugin_name,
-                                time_created:_.formatDate("yyyy-mm-dd hh:ii",data.time_created)
-                            },"Main-Window");
-                            shenjian.close();
-                        })
-                    });
-                })
-            }).catch(function (err) {
-                $.toast("Error:"+err.toLocaleString());
+        // 石勇 保存配置
+        let __charsets = $("input[name='charsets']").val();
+        let __num_images = $("input[name='num_images']").val();
+        let __num_text = $("input[name='num_text']").val();
+        let __width = $("input[name='width']").val();
+        let __height = $("input[name='height']").val();
+        let __font = $("input[name='font']").val();
+        let __obfuscation = $("input[name='obfuscation']").val();
+        let __new_params = $("input[name='new_params']").val();
+        let param_data = {
+            charsets:__charsets,
+            num_images:__num_images,
+            num_text:__num_text,
+            width:__width,
+            height:__height,
+            font:__font,
+            obfuscation:__obfuscation,
+            name:__new_params,
+            time_created:new Date().getTime()
+        };
+        param_data._id = $(".selected-text").data("id");
+        let operate_type = $(".local-type-title.selected").data("type");
+        if(operate_type == "new"){
+            if(!param_data.name){
+                $.toast(i18n.__("project_captcha_error_configuration_name"));
+                return;
+            }
+            // 创建新配置
+            param_data._id = process.hrtime().join('_');
+            param_db.put(param_data, (err,res) => {
+                exportCaptcha();
             });
-        });
+        }else if(operate_type == "cover"){
+            if(param_data._id != 0){
+                // 覆盖原有配置
+                param_data.name = $(".selected-text").text();
+                param_data._rev = $(".selected-text").data("rev");
+                param_db.put(param_data, (err,res) => {
+                    exportCaptcha();
+                });
+            }
+        }else{
+            exportCaptcha();
+        }
+
+        // 导出验证码文件
+        function exportCaptcha(){
+            $('.progress-wrapper').show().on('progress-change',function (e,progress) {//进度条
+                $(this).find('span').text(progress);
+            });
+            let db = new PouchDB("project-list");
+            data._id = process.hrtime().join('_');
+            db.put(data, (err,res) => {
+                data.project_id = data._id;
+                let projectDB = new PouchDB("project-"+data.project_id);
+                projectDB.createIndex({
+                    index: {
+                        fields: ['_id','labeled']
+                    }
+                }).then(function (result) {
+                    shenjian.post(shenjian.url("create","project"),data,function(){
+                        db.close().then(function () {
+                            let count = parseInt(data.inputs.num_images);
+                            //解析charsets
+                            let charsets = data.inputs.charsets.split(',');
+                            let charsets_parsed = [];
+                            for(let i=0;i<charsets.length;i++){
+                                if(charsets[i].length===3 && charsets[i].charAt(1) === '-'){
+                                    const char1 = charsets[i].charAt(0);
+                                    const char3 = charsets[i].charAt(2);
+                                    if(/\d/.test(char1) && /\d/.test(char3) && char1<char3){
+                                        for(let j=char1;j<=char3;j++){
+                                            charsets_parsed.push(j)
+                                        }
+                                    }else if(/[a-zA-Z]/.test(char1) && /[a-zA-Z]/.test(char3) && char1.charCodeAt(0)<=char3.charCodeAt(0)){
+                                        for(let k=char1.charCodeAt(0);k<=char3.charCodeAt(0);k++){
+                                            charsets_parsed.push(String.fromCharCode(k));
+                                        }
+                                    }
+                                }else{
+                                    charsets_parsed.push(charsets[i]);
+                                }
+                            }
+                            saveProject(projectDB,data.inputs,count,charsets_parsed);//存储验证码
+                            $(window).on('project-save-success',function () {
+                                shenjian.send("ProjectCreated",{
+                                    project_id:data.project_id,
+                                    name:data.name,
+                                    plugin_icon:plugin_icon,
+                                    plugin_name:plugin_name,
+                                    time_created:_.formatDate("yyyy-mm-dd hh:ii",data.time_created)
+                                },"Main-Window");
+                                shenjian.close();
+                            })
+                        });
+                    })
+                }).catch(function (err) {
+                    $.toast("Error:"+err.toLocaleString());
+                });
+            });
+        }
+
     });
 
     function saveProject(db,inputs_user,count,charsets,docs){
@@ -147,13 +295,13 @@ if(shenjian.is("dialog-tools-generate-captcha")){
             ctx.fillStyle = "rgba("+red+","+green+","+blue+",1)";//随机背景颜色
             ctx.strokeStyle=ctx.fillStyle;
             ctx.lineWidth=1;
-            const angle = Math.random()*Math.PI/6;
+            const angle = (Math.random()-0.5)*Math.PI/12;
             const x = width/(count+1)*(m+1);
             ctx.translate(x,height/2);
             ctx.rotate(angle);
             const text = code[m];
-            let twidht = width/(count+1)*(Math.random()-0.5);
-            let theight = height/4*(Math.random()-0.5);
+            let twidht = width/(count+1)*(Math.random()-0.5)/10;
+            let theight = height/4*(Math.random()-0.5)/10;
             ctx.fillText(text,twidht,theight);
             // ctx.strokeText(text,twidht,theight);
             ctx.restore();

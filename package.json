@@ -1,6 +1,6 @@
 {
   "name": "Colabeler",
-  "version": "1.1.14",
+  "version": "1.1.15",
   "buildVersion": "65",
   "productName": "Colabeler",
   "homepage": "http://www.colabeler.com",
@@ -13,14 +13,14 @@
       "add": [],
       "fix": [
         "上传文件速度优化",
-        "标注时显示坐标信息"
+        "标注项目的图片显示bug修复"
       ]
     },
     "en": {
       "add": [],
       "fix": [
         "Upload file speed optimization",
-        "Display coordinate information when labeling"
+        "An image of the marked item shows bug fixes"
       ]
     }
   },

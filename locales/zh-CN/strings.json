@@ -27,7 +27,7 @@
     "menu_recommend_houyi": "下载 后羿网页采集器",
     "menu_tool": "工具",
     "menu_tool_generate": "生成数据",
-    "menu_tool_generate_captcha": "生成验证码",
+    "menu_tool_generate_captcha": "生成验证码...",
     "menu_mac_hide": "隐藏",
     "menu_mac_hideOthers": "隐藏其他",
     "menu_mac_unHide": "显示全部",
@@ -93,6 +93,7 @@
     "project_new_projectName":"项目名称",
     "project_new_project":"项目",
     "project_new_create":"创建",
+    "project_new_generate":"生成",
 
     "project_new_notEmpty":"项目名不能为空",
 
@@ -181,6 +182,16 @@
     "project_captcha_label_font":"验证码文字大小",
     "project_captcha_label_obfuscation":"是否有混淆(true,false)",
     "project_captcha_generating":"验证码生成中",
+
+    "project_captcha_error_folder":"请先选择验证码存储文件夹！",
+    "project_captcha_error_configuration_name":"请输入新配置名称",
+    "project_captcha_choose_configuration":"选择配置",
+    "project_captcha_default_configuration":"默认配置",
+    "project_captcha_not_save_configuration":"不保存当前配置",
+    "project_captcha_cover_configuration":"覆盖当前配置",
+    "project_captcha_save_new_configuration":"存为新配置",
+    "project_captcha_delete_configuration":"删除",
+    "project_captcha_new_configuration":"新配置",
 
     "project_label_saved_successfully":"保存成功",
     "project_content_unsaved":"还有内容未保存，确认离开吗？",
